@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CV_Details.Ajouter_langue_fragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="650dp"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+
+        >
+
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:text="Saisir le nom et le niveau"
+            android:textColor="#000"
+            android:textSize="20dp"
+            />
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal">
+
+            <Spinner
+                android:layout_width="290dp"
+                android:layout_height="40dp"
+                android:entries="@array/Langues"
+                android:id="@+id/Nom_Spinner_Ajout_langues"
+                />
+
+            <Spinner
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:entries="@array/Niveau_langues"
+                android:id="@+id/Niveau_Spinner_Ajout_langues"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:text="Importer un certificat (optionnel)"
+            android:textColor="#000"
+            android:textSize="20dp"
+            />
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:hint="Nom du certificat"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/NomCertificat_Edittext_Ajout_langues"
+            />
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="20dp"
+            >
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:text="Pas de fichier séléctionné"
+                android:textSize="20dp"
+                android:textColor="#000"
+                android:gravity="center_vertical"
+                android:id="@+id/Fichier_Text_Ajout_langues"
+                />
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Importer"
+                android:background="@drawable/button_burders"
+                android:id="@+id/Choisir_Button_Ajout_langues"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="20dp"
+            >
+            <Button
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_burders"
+                android:backgroundTint="#C0C0C0"
+                android:text="Annuler"
+                android:id="@+id/Annuler_Button_Ajout_langues"
+                />
+            <Button
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_burders"
+                android:text="Ajouter"
+                android:id="@+id/Ajouter_Button_Ajout_langues"
+                />
+        </LinearLayout>
+        <Button
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:background="@drawable/button_burders"
+            android:text="Consulter Mon Cv"
+            android:id="@+id/Consulter_Button_Ajout_langues"
+            />
+
+    </LinearLayout>
+
+</FrameLayout>

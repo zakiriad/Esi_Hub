@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Etapes.Suivie_etape_physique_fragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="650dp"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        >
+        <ProgressBar
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:progress="10"
+            android:progressTint="@color/backgroundColor"
+            android:layout_gravity="center_horizontal"
+            android:minHeight="40dp"
+            android:id="@+id/progress_bar_suivie_etapes"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            />
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:textColor="#000"
+            android:textSize="19dp"
+            android:text="Etape en cours de traitement"
+            android:layout_marginBottom="30dp"
+            />
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:textColor="#000"
+            android:textSize="19dp"
+            android:text="Vérification identité"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/id_text_suivie_etapes"
+            />
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:textSize="10dp"
+            android:text="Vérification Document"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/Documents_text_suivie_etapes"
+            />
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:textSize="10dp"
+            android:text="Vérification de non prets de la bibliothèque"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/prets_text_suivie_etapes"
+            />
+        <Button
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:background="@drawable/button_burders"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp"
+            android:text="Retour"
+            android:id="@+id/Retour_Button_suivie_etapes"
+            />
+        
+    </LinearLayout>
+    
+
+</FrameLayout>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CV_Details.Ajout_Experience_fragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="620dp"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        >
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:text="Ajouter une experience"
+            android:textSize="20dp"
+            android:textColor="#000"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="20dp"
+            />
+
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:text="Type d'experience"
+            android:textSize="19dp"
+            android:textColor="#000"
+            />
+        <Spinner
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:entries="@array/Type_Experience"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/Nom_Spinner_Ajout_experience"
+            />
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:text="Etablissement"
+            android:textSize="19dp"
+            android:textColor="#000"
+            />
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:background="@drawable/edittext_border"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:id="@+id/etablissement_Edittext_Ajout_experience"
+            android:layout_marginBottom="20dp"
+            />
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:text="Date Debut"
+                android:textSize="19dp"
+                android:textColor="#000"
+                />
+            <TextView
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:text="Date Fin"
+                android:textSize="19dp"
+                android:textColor="#000"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp"
+            >
+            <EditText
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/edittext_border"
+                android:id="@+id/DateDebut_Edittext_Ajout_experience"
+
+                />
+            <EditText
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/edittext_border"
+                android:id="@+id/DateFin_Edittext_Ajout_experience"
+                />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp">
+            <Button
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_burders"
+                android:backgroundTint="#C0C0C0"
+                android:layout_marginRight="5dp"
+                android:text="Annuler"
+                android:id="@+id/Annuler_Button_Ajout_experience"
+                />
+            <Button
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_burders"
+                android:layout_marginLeft="5dp"
+                android:text="Ajouter"
+                android:id="@+id/Ajouter_Button_Ajout_experience"
+                />
+        </LinearLayout>
+        <Button
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:layout_margin="20dp"
+            android:background="@drawable/button_burders"
+            android:text="Consulter mon Cv"
+            android:textAlignment="center"
+            tools:ignore="RtlCompat"
+            android:id="@+id/Consulter_Button_Ajout_experience"
+            />
+    </LinearLayout>
+
+
+</FrameLayout>

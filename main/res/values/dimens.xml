@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="screen_width">1080px</dimen>
+    <dimen name="screen_height">1920px</dimen>
+    <dimen name="image_width">317px</dimen>
+    <dimen name="image_height">491px</dimen>
+    <dimen name="image_margin_left">108.06px</dimen>
+    <dimen name="image_margin_top">99.3px</dimen>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Actualité"
+        android:id="@+id/News_menu_item"
+        />
+    <item
+        android:title="Formation"
+        android:id="@+id/Formation_menu_item"
+        />
+    <item
+        android:title="Job"
+        android:id="@+id/Job_menu_item"
+        />
+</menu>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/Profil_menu_item"
+        android:title="Profil"
+
+        />
+    <item
+        android:id="@+id/CV_menu_item"
+        android:title="Mon CV"
+        />
+    <item
+        android:id="@+id/Dossier_menu_item"
+        android:title="Mon Dossier"
+        />
+    <item
+        android:id="@+id/Logout_menu_item"
+        android:title="Logout"
+        />
+    <item
+        android:id="@+id/Apropos_menu_item"
+        android:title="A propos"
+        />
+</menu>

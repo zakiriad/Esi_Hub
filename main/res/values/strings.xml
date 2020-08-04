@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">EsiHub</string>
+    <string name="close">close</string>
+    <string name="open">open</string>
+    <string-array name="Niveau_Etude">
+        <item>Choisisser votre niveau étude</item>
+        <item>Première Année</item>
+        <item>Deuxième Année</item>
+        <item>Troisième Année</item>
+        <item>Quatrième Année</item>
+        <item>Cinquième Année</item>
+
+    </string-array>
+    <string-array name="Niveau_langues">
+        <item>-</item>
+        <item>A1</item>
+        <item>A2</item>
+        <item>B1</item>
+        <item>B2</item>
+        <item>C1</item>
+        <item>C2</item>
+    </string-array>
+    <string-array name="Langues">
+        <item>Allemand</item>
+        <item>Anglais</item>
+        <item>Arabe</item>
+        <item>Espagnol</item>
+        <item>Français</item>
+        <item>Italien</item>
+    </string-array>
+    <string-array name="Niveau_competences">
+        <item>Faible</item>
+        <item>Moyen</item>
+        <item>Expérimenté</item>
+        <item>Maitrise</item>
+    </string-array>
+    <string-array name="Type_Experience">
+        <item>Stage</item>
+        <item>Emploie</item>
+        <item>Workshop</item>
+    </string-array>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

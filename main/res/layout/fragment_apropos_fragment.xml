@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CV_Details.Apropos_fragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:textSize="20dp"
+            android:textColor="#000"
+            android:text="A propos de vous"
+            android:layout_marginBottom="20dp"
+            />
+
+
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="start"
+            android:textSize="17dp"
+            android:textColor="#000"
+            android:background="@drawable/edittext_border"
+            android:id="@+id/Apropos_Edittext_apropos"
+            />
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:textSize="17dp"
+            android:textColor="#000"
+            android:text="0/500"
+            android:textAlignment="textEnd"
+            tools:ignore="RtlCompat"
+            android:id="@+id/NbrCaracteres_Text_apropos"/>
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp">
+            <Button
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_burders"
+                android:backgroundTint="#C0C0C0"
+                android:layout_marginRight="5dp"
+                android:text="Annuler"
+                android:id="@+id/Annuler_Button_Ajout_apropos"
+                />
+            <Button
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_burders"
+                android:layout_marginLeft="5dp"
+                android:text="Sauvegarder"
+                android:id="@+id/Ajouter_Button_Ajout_apropos"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

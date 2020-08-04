@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Etapes.Verification_id_fragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="650dp"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="30dp"
+            android:gravity="center_vertical"
+            android:textSize="20dp"
+            android:textColor="#000"
+            android:text="Vérification d'identité"
+            />
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:textSize="19dp"
+            android:textColor="#000"
+            android:text="Entrer Votre numero de carte d'étudiant"
+            />
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:background="@drawable/edittext_border"
+            android:inputType="number"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/Numero_etudiant_veri_id"
+            />
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:textSize="17dp"
+            android:textColor="#000"
+            android:text="Importer un scan de votre carte d'étudiant"
+            />
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:textSize="19dp"
+                android:textColor="#000"
+                android:text="Aucun fichier séléectionné"
+                android:id="@+id/Carte_etud_veri_id"
+                />
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_burders"
+                android:text="Choisir"
+                android:id="@+id/Choisir_Button_veri_id"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp">
+            <Button
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_burders"
+                android:backgroundTint="#C0C0C0"
+                android:text="Annuler"
+                android:layout_marginRight="5dp"
+                android:id="@+id/Annuler_Button_veri_id"
+                />
+            <Button
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_burders"
+                android:text="Confirmer"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/Confirmer_Button_veri_id"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
