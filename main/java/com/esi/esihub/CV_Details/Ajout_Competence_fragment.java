@@ -22,11 +22,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class Ajout_Competence_fragment extends Fragment {
-    private EditText Nom = getActivity().findViewById(R.id.Nom_Edittext_Ajout_competence);
-    private Spinner Niveau = getActivity().findViewById(R.id.Niveau_Spinner_Ajout_competence);
-    private Button Annuler = getActivity().findViewById(R.id.Annuler_Button_Ajout_competence),
-            Ajouter = getActivity().findViewById(R.id.Ajouter_Button_Ajout_competence),
-            Consulter = getActivity().findViewById(R.id.Consulter_Button_Ajout_competence);
+    private EditText Nom;
+    private Spinner Niveau;
+    private Button Annuler, Ajouter, Consulter;
 
     final DatabaseReference ResumeReference = FirebaseDatabase.getInstance().getReference("Resumes").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
@@ -43,6 +41,15 @@ public class Ajout_Competence_fragment extends Fragment {
 
     @Override
     public void onStart(){
+        Nom = getActivity().findViewById(R.id.Nom_Edittext_Ajout_competence);
+        Niveau = getActivity().findViewById(R.id.Niveau_Spinner_Ajout_competence);
+        Annuler = getActivity().findViewById(R.id.Annuler_Button_Ajout_competence);
+        Ajouter = getActivity().findViewById(R.id.Ajouter_Button_Ajout_competence);
+        Consulter = getActivity().findViewById(R.id.Consulter_Button_Ajout_competence);
+
+
+
+
         super.onStart();
         Annuler.setOnClickListener(new View.OnClickListener() {
             @Override
