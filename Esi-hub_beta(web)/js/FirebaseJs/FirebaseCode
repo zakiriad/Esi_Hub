@@ -1,0 +1,23 @@
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCaCsX12Zr5NPyOLtL3AcvY7fq4LNTXLII",
+    authDomain: "esi-hub-f9895.firebaseapp.com",
+    databaseURL: "https://esi-hub-f9895.firebaseio.com",
+    projectId: "esi-hub-f9895",
+    storageBucket: "esi-hub-f9895.appspot.com",
+    messagingSenderId: "695302256864",
+    appId: "1:695302256864:web:feba3d365f39723f943885",
+    measurementId: "G-Z339YQR252"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
