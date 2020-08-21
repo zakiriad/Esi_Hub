@@ -3,13 +3,16 @@
     <item
         android:title="Actualité"
         android:id="@+id/News_menu_item"
+        android:icon="@drawable/ic_baseline_dashboard_24"
         />
     <item
         android:title="Formation"
         android:id="@+id/Formation_menu_item"
+        android:icon="@drawable/ic_icon_menu_formation"
         />
     <item
         android:title="Job"
         android:id="@+id/Job_menu_item"
+        android:icon="@drawable/ic_icon_menu_jobs"
         />
 </menu>

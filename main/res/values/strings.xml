@@ -11,6 +11,16 @@
         <item>Cinquième Année</item>
 
     </string-array>
+    <string-array name="Specialite_Etude">
+        <item>Specialite</item>
+        <item>SIW</item>
+        <item>ISI</item>
+    </string-array>
+    <string-array name="Genre">
+        <item>Genre</item>
+        <item>Homme</item>
+        <item>Femme</item>
+    </string-array>
     <string-array name="Niveau_langues">
         <item>-</item>
         <item>A1</item>
@@ -21,6 +31,7 @@
         <item>C2</item>
     </string-array>
     <string-array name="Langues">
+        <item>Langue</item>
         <item>Allemand</item>
         <item>Anglais</item>
         <item>Arabe</item>

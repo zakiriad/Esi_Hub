@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -17,10 +18,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.esi.esihub.Helper_classes.Resume;
 import com.esi.esihub.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Apropos_fragment extends Fragment {
 
@@ -40,7 +45,7 @@ public class Apropos_fragment extends Fragment {
     @Override
     public void onStart(){
         super.onStart();
-        apropos = getActivity().findViewById(R.id.Apropos_section_resume);
+        apropos = getActivity().findViewById(R.id.Apropos_Edittext_apropos);
         NbrChar = getActivity().findViewById(R.id.NbrCaracteres_Text_apropos);
         Ajouter = getActivity().findViewById(R.id.Ajouter_Button_Ajout_apropos);
         Annuler = getActivity().findViewById(R.id.Annuler_Button_Ajout_apropos);
@@ -48,6 +53,19 @@ public class Apropos_fragment extends Fragment {
 
 
         try {
+                ResumeReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        Resume userResume = dataSnapshot.getValue(Resume.class);
+                        apropos.setText(userResume.getApropos());
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
                 apropos.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -74,12 +92,7 @@ public class Apropos_fragment extends Fragment {
             public void onClick(View v) {
                 // Save the value to SharedPreference to use it later
                 try{
-                    SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString("A propos_Cv", apropos.getText().toString());
-                    editor.commit();
-
-                    ResumeReference.child("Apropos").setValue(apropos.getText().toString());
+                    ResumeReference.child("apropos").setValue(apropos.getText().toString());
                     FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.fragmentLay, new Resume_fragment());
                     fragmentTransaction.addToBackStack(null);

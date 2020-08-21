@@ -4,6 +4,7 @@ package com.esi.esihub.CV_Details;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -20,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.esi.esihub.Helper_classes.Competence;
 import com.esi.esihub.Helper_classes.Experience;
 import com.esi.esihub.Helper_classes.Formation;
@@ -27,12 +29,15 @@ import com.esi.esihub.Helper_classes.Langue;
 import com.esi.esihub.Helper_classes.Resume;
 
 import com.esi.esihub.R;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 
 public class Resume_fragment extends Fragment {
@@ -69,7 +74,7 @@ public class Resume_fragment extends Fragment {
         DatabaseReference ExcperiencesReference = UserResumeReference.child("Experiences");
         DatabaseReference SkillsReference = UserResumeReference.child("Competences");
 
-        DatabaseReference AproposReference = FirebaseDatabase.getInstance().getReference("Resumes").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Apropos");
+        DatabaseReference AproposReference = FirebaseDatabase.getInstance().getReference("Resumes").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("apropos");
         AproposReference.addValueEventListener(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
@@ -95,6 +100,17 @@ public class Resume_fragment extends Fragment {
                         Nom.setText(userResume.getNom()+" "+userResume.getPrenom());
                         Contact.setOrientation(LinearLayout.VERTICAL);
 
+                        if(userResume.getLien_photo_profil() != null){
+                            StorageReference PhotoProfil = FirebaseStorage.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Photo_profil");
+                            PhotoProfil.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    ImageView photoProfil = getActivity().findViewById(R.id.photo_profil_resume);
+                                    Glide.with(getContext()).load(uri).into(photoProfil);
+                                }
+                            });
+                        }
+
                         // Les parametres:
                         LinearLayout.LayoutParams FirstTextViewParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,1);
                         FirstTextViewParams.setMargins(15, 60, 20,0);
@@ -109,11 +125,20 @@ public class Resume_fragment extends Fragment {
                         Esi_Email.setTextColor(getActivity().getColor(R.color.White));
                         Esi_Email.setLayoutParams(FirstTextViewParams);
 
+                        TextView autre_Email = new TextView(getActivity());
+                        autre_Email.setTextColor(getActivity().getColor(R.color.White));
+                        autre_Email.setText(userResume.getOther_email());
+                        autre_Email.setLayoutParams(TextViewParams);
+
                         TextView Telephone = new TextView(getActivity());
                         Telephone.setTextColor(getActivity().getColor(R.color.White));
                         Telephone.setText(userResume.getTelephone());
                         Telephone.setLayoutParams(TextViewParams);
 
+                        TextView wilaya = new TextView(getActivity());
+                        wilaya.setTextColor(getActivity().getColor(R.color.White));
+                        wilaya.setText(userResume.getWilaya());
+                        wilaya.setLayoutParams(TextViewParams);
 
 
                         Contact.addView(Esi_Email);
@@ -270,7 +295,7 @@ public class Resume_fragment extends Fragment {
                         Nom.setLayoutParams(NomParam);
 
                         TextView Date = new TextView(getActivity());
-                        Date.setText(formation.getDate());
+                        Date.setText(formation.getDateFin());
                         Date.setTextColor(getActivity().getColor(R.color.Black));
                         Date.setLayoutParams(DateParam);
 

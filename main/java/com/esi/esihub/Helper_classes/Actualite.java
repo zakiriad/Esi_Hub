@@ -1,16 +1,24 @@
 package com.esi.esihub.Helper_classes;
 
 public class Actualite {
-    private String Titre, sousTitre, lien;
+    private String titre, soustitre, lien, lien_photo;
 
     public Actualite() {}
 
-    public String getTitre() {
-        return Titre;
+    public String getLien_photo() {
+        return lien_photo;
     }
 
-    public void setTitre(String titre) {
-        Titre = titre;
+    public void setLien_photo(String lien_photo) {
+        this.lien_photo = lien_photo;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String Titre) {
+        titre = Titre;
     }
 
     public String getLien() {
@@ -22,10 +30,10 @@ public class Actualite {
     }
 
     public String getSousTitre() {
-        return sousTitre;
+        return soustitre;
     }
 
     public void setSousTitre(String sousTitre) {
-        this.sousTitre = sousTitre;
+        this.soustitre = soustitre;
     }
 }

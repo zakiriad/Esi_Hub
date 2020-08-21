@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ajouter une information"
+            android:text="Ajouter une formation"
             android:textSize="26dp"
             android:textColor="#000"
             android:layout_marginTop="20dp"
@@ -68,24 +68,76 @@
             android:layout_gravity="center_horizontal"
             android:background="@drawable/edittext_border"
             android:layout_marginBottom="20dp"
-            android:id="@+id/Date_Edittext_Ajout_formation"
-            />
-        <TextView
-            android:layout_width="350dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:textSize="20dp"
-            android:textColor="#000"
-            android:text="Date de fin"
-            />
-        <EditText
-            android:layout_width="350dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/edittext_border"
-            android:layout_marginBottom="20dp"
             android:id="@+id/Domaine_Edittext_Ajout_formation"
             />
+
+
+
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:text="Date Debut"
+                android:textSize="19dp"
+                android:textColor="#000"
+                />
+            <TextView
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:text="Date Fin"
+                android:textSize="19dp"
+                android:textColor="#000"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp"
+            >
+            <EditText
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:inputType="date"
+                android:background="@drawable/edittext_border"
+                android:id="@+id/DateDebut_Edittext_Ajout_formation"
+
+                />
+            <EditText
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:inputType="date"
+                android:background="@drawable/edittext_border"
+                android:id="@+id/DateFin_Edittext_Ajout_formation"
+                />
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
         <TextView
             android:layout_width="350dp"
             android:layout_height="40dp"
@@ -134,7 +186,7 @@
                 android:layout_marginEnd="5dp"
                 android:layout_marginRight="5dp"
                 android:backgroundTint="#C0C0C0"
-                android:text="Annuler"
+                android:text="Retour"
                 android:id="@+id/Annuler_Button_Ajout_formation"
                 />
             <Button
@@ -153,7 +205,7 @@
             android:layout_height="40dp"
             android:background="@drawable/button_burders"
             android:layout_gravity="center_horizontal"
-            android:text="Voir mon Cv"
+            android:text="Consuleter mes formations"
             android:id="@+id/VoirFormation_Button_Ajout_formation"
             />
     </LinearLayout>

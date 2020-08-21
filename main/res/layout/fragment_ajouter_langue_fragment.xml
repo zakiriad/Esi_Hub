@@ -96,7 +96,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/button_burders"
                 android:backgroundTint="#C0C0C0"
-                android:text="Annuler"
+                android:text="Retour"
                 android:id="@+id/Annuler_Button_Ajout_langues"
                 />
             <Button
@@ -113,7 +113,7 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center"
             android:background="@drawable/button_burders"
-            android:text="Consulter Mon Cv"
+            android:text="Consulter ma lise des langues"
             android:id="@+id/Consulter_Button_Ajout_langues"
             />
 

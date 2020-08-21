@@ -1,33 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="200dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#6286ed"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_margin="50dp"
         >
-        <ImageView
+        <androidx.cardview.widget.CardView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/image_burders"
+            app:cardCornerRadius="250dp"
+            android:background="@color/White">
 
-            android:backgroundTint="#000"
-            />
+            <androidx.cardview.widget.CardView
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                app:cardCornerRadius="250dp"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/image_burders"
+                    android:id="@+id/photo_profil_Header"
+                    />
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.cardview.widget.CardView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nom Prenom"
-            android:textSize="30dp"
+            android:textSize="20dp"
+            android:id="@+id/Nom_Prenom_Header"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:textColor="#FFF"/>
+            android:textColor="#000"/>
     </LinearLayout>
 
 

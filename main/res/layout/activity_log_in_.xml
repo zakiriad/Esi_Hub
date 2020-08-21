@@ -31,6 +31,7 @@
         android:orientation="vertical"
         android:id="@+id/LogIn_Form"
         >
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,17 +43,37 @@
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="20dp"
             />
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:text="Email"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:textColor="@color/Black"
+            android:textSize="18dp"
+            />
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/edittext_border"
             android:id="@+id/Email_Login"
             android:layout_margin="10dp"
             />
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:text="Mot de Passe"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:textColor="@color/Black"
+            android:textSize="18dp"
+            />
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Mot de passe"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/edittext_border"
             android:inputType="textPassword"
             android:id="@+id/MotDePasse_Login"
             android:layout_margin="10dp"/>

@@ -20,13 +20,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Ajout_Experience_fragment extends Fragment {
-    private EditText Etablissement = getActivity().findViewById(R.id.etablissement_Edittext_Ajout_experience),
-            DateDebut = getActivity().findViewById(R.id.DateDebut_Edittext_Ajout_experience),
-            DateFin = getActivity().findViewById(R.id.DateFin_Edittext_Ajout_experience);
-    private Spinner Nom = getActivity().findViewById(R.id.Nom_Spinner_Ajout_experience);
-    private Button Annuler = getActivity().findViewById(R.id.Annuler_Button_Ajout_experience),
-            Ajouter = getActivity().findViewById(R.id.Ajouter_Button_Ajout_experience),
-            Consulter = getActivity().findViewById(R.id.Consulter_Button_Ajout_experience);
+    private EditText Etablissement, DateDebut, DateFin;
+    private Spinner Nom ;
+    private Button Annuler, Ajouter, Consulter;
 
     final DatabaseReference ResumeReference = FirebaseDatabase.getInstance().getReference("Resumes").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
@@ -41,6 +37,15 @@ public class Ajout_Experience_fragment extends Fragment {
     @Override
     public void onStart(){
         super.onStart();
+        Etablissement = getActivity().findViewById(R.id.etablissement_Edittext_Ajout_experience);
+        DateDebut = getActivity().findViewById(R.id.DateDebut_Edittext_Ajout_experience);
+        DateFin = getActivity().findViewById(R.id.DateFin_Edittext_Ajout_experience);
+        Nom = getActivity().findViewById(R.id.Nom_Spinner_Ajout_experience);
+        Annuler = getActivity().findViewById(R.id.Annuler_Button_Ajout_experience);
+        Ajouter = getActivity().findViewById(R.id.Ajouter_Button_Ajout_experience);
+        Consulter = getActivity().findViewById(R.id.Consulter_Button_Ajout_experience);
+
+
 
 
         Annuler.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +77,7 @@ public class Ajout_Experience_fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentLay, new Resume_fragment());
+                fragmentTransaction.replace(R.id.fragmentLay, new Visualiser_Experiences());
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }

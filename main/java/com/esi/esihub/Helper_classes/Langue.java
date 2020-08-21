@@ -10,6 +10,8 @@ public class Langue {
         this.lien_Certificat = lien_Certificat;
     }
 
+    public Langue() {
+    }
 
     public String getNom() {
         return Nom;

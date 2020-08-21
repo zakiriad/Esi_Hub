@@ -8,6 +8,9 @@ public class Competence {
         Niveau = niveau;
     }
 
+    public Competence() {
+    }
+
     public String getNom() {
         return Nom;
     }
@@ -19,7 +22,6 @@ public class Competence {
     public String getNiveau() {
         return Niveau;
     }
-
     public void setNiveau(String niveau) {
         Niveau = niveau;
     }

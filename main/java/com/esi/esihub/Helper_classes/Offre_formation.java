@@ -1,39 +1,55 @@
 package com.esi.esihub.Helper_classes;
 
 public class Offre_formation {
-    private String Nom, Domaine, DateLimiteInscrp, DateDebut;
+    private String nom, domaine, datelimiteinscrp, datedebut, etablissement, lien_image;
 
     public Offre_formation() { }
 
-    public String getNom() {
-        return Nom;
+    public String getEtablissement() {
+        return etablissement;
     }
 
-    public void setNom(String nom) {
-        Nom = nom;
+    public void setEtablissement(String Etablissement) {
+        etablissement = Etablissement;
+    }
+
+    public String getLien_Image() {
+        return lien_image;
+    }
+
+    public void setLien_Image(String lien_Image) {
+        this.lien_image = lien_Image;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String Nom) {
+        nom = Nom;
     }
 
     public String getDomaine() {
-        return Domaine;
+        return domaine;
     }
 
-    public void setDomaine(String domaine) {
-        Domaine = domaine;
+    public void setDomaine(String Domaine) {
+        domaine = Domaine;
     }
 
     public String getDateLimiteInscrp() {
-        return DateLimiteInscrp;
+        return datelimiteinscrp;
     }
 
     public void setDateLimiteInscrp(String dateLimiteInscrp) {
-        DateLimiteInscrp = dateLimiteInscrp;
+        datelimiteinscrp = dateLimiteInscrp;
     }
 
     public String getDateDebut() {
-        return DateDebut;
+        return datedebut;
     }
 
     public void setDateDebut(String dateDebut) {
-        DateDebut = dateDebut;
+        datedebut = dateDebut;
     }
 }

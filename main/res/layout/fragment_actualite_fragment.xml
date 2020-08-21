@@ -4,14 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Home_Fragments.Actualite_fragment">
-    <LinearLayout
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:id="@+id/Actualite_mainlayout"
         >
 
 
-    </LinearLayout>
+    </ListView>
 
 </FrameLayout>

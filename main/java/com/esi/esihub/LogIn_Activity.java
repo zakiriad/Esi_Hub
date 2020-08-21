@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LogIn_Activity extends AppCompatActivity {
     private EditText email, password;
     private Button Login, Inscription;
+    private TextView reset;
     private FirebaseAuth auth;
 
     @Override
@@ -30,20 +32,29 @@ public class LogIn_Activity extends AppCompatActivity {
         this.password = (EditText) findViewById(R.id.MotDePasse_Login);
         this.Login = (Button) findViewById(R.id.LogIn_Button);
         this.Inscription = (Button) findViewById(R.id.SignUp_Button);
+        this.reset = findViewById(R.id.mdp_perdu_text);
 
-        Inscription.setOnClickListener(new View.OnClickListener() {
+        reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), SignUp_Activity.class));
+                Intent intent = new Intent(LogIn_Activity.this, resetPassword_activity.class);
+                startActivity(intent);
                 finish();
             }
         });
 
+
+
         auth = FirebaseAuth.getInstance();
 
-        if(auth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(), Home_Activity.class));
-        }else{
+        if (auth.getCurrentUser() == null) {
+            Inscription.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getApplicationContext(), SignUp_Activity.class));
+                    finish();
+                }
+            });
             Login.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -82,6 +93,9 @@ public class LogIn_Activity extends AppCompatActivity {
                             });
                 }
             });
+        } else {
+            startActivity(new Intent(getApplicationContext(), Home_Activity.class));
+            finish();
         }
     }
 }

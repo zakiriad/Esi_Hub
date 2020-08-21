@@ -2,7 +2,9 @@ package com.esi.esihub.Home_Fragments;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -14,9 +16,13 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.os.Handler;
 import android.provider.MediaStore;
+import android.text.Layout;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +31,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.esi.esihub.Etapes.Import_Documents_fragment;
 import com.esi.esihub.Helper_classes.User;
 import com.esi.esihub.Home_Activity;
@@ -42,7 +49,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -51,6 +60,7 @@ import java.net.URL;
 public class Profil_fragment extends Fragment {
 
     private Uri filePath;
+    private ImageView photo_profil;
     private ProgressDialog progressDialog;
     private FirebaseStorage storage = FirebaseStorage.getInstance();
     private DatabaseReference UserReference = FirebaseDatabase.getInstance().getReference("Liste_Etudiants").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -68,13 +78,11 @@ public class Profil_fragment extends Fragment {
     public void onStart(){
         super.onStart();
 
-
-        ImageView photo_profil;
         final EditText Nom, Prenom, Esi_mail, other_mail, phone_number, birth_day, birth_place, wilaya;
         Button Edit_button = getActivity().findViewById(R.id.Edit_Button_profil),
                 Cancel_button = getActivity().findViewById(R.id.Cancel_Button_profil);
 
-
+        photo_profil = getActivity().findViewById(R.id.photo_profil);
         Nom = getActivity().findViewById(R.id.Nom_Edittext_profil);
         Prenom = getActivity().findViewById(R.id.Prenom_Edittext_profil);
         Esi_mail = getActivity().findViewById(R.id.Email_Edittext_profil);
@@ -88,11 +96,52 @@ public class Profil_fragment extends Fragment {
         photo_profil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if(ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
-                    //File Selecter
                     try {
-                        selectPicture();
-                        uploadFile(filePath);
+
+                        AlertDialog.Builder PopUp = new AlertDialog.Builder(getActivity());
+                        PopUp.setPositiveButton("Importer", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                selectPicture();
+                                dialog.dismiss();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                builder.setPositiveButton("Sauvegarder", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Picasso.get().load(filePath).into((ImageView) getActivity().findViewById(R.id.photo_profil));
+                                        dialog.dismiss();
+                                    }
+                                });
+                                builder.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                });
+                                final AlertDialog Preview = builder.create();
+                                LayoutInflater inflater = getLayoutInflater();
+                                View dialogLayout = inflater.inflate(R.layout.photo_profil_preview, null);
+
+                                Preview.setView(dialogLayout);
+                                Preview.show();
+
+
+
+                            }
+                        });
+                        PopUp.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                        PopUp.show();
+
+
+
+                        //Fin
                     }catch (Exception e){
                         Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
                     }
@@ -106,24 +155,31 @@ public class Profil_fragment extends Fragment {
                 }
             }
         });
-
-
-        final DatabaseReference profilReference = FirebaseDatabase.getInstance().getReference("Liste_Etudiants").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-
-        profilReference.addValueEventListener(new ValueEventListener() {
+        UserReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 try {
 
-                    User user  = dataSnapshot.getValue(User.class);
-                    Nom.setText(user.getNom());
-                    Prenom.setText(user.getPrenom());
-                    Esi_mail.setText(user.getEmail());
-                    other_mail.setText(user.getOther_email());
-                    phone_number.setText(user.getTelephone());
-                    birth_day.setText(user.getDate_de_naissance());
-                    birth_place.setText(user.getLieu_de_naissance());
-                    wilaya.setText(user.getWilaya());
+                    User user_db  = dataSnapshot.getValue(User.class);
+                    Nom.setText(user_db.getNom());
+                    Prenom.setText(user_db.getPrenom());
+                    Esi_mail.setText(user_db.getEmail());
+                    other_mail.setText(user_db.getOther_email());
+                    phone_number.setText(user_db.getTelephone());
+                    birth_day.setText(user_db.getDate_de_naissance());
+                    birth_place.setText(user_db.getLieu_de_naissance());
+                    wilaya.setText(user_db.getWilaya());
+
+                    if (user_db.getLien_photo_profil() != null){
+                        StorageReference Uri_Photo_profil = FirebaseStorage.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Photo_profil");
+                        Uri_Photo_profil.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                ImageView photo_profil = getActivity().findViewById(R.id.photo_profil);
+                                Glide.with(getContext()).load(uri).into(photo_profil);
+                            }
+                        });
+                    }
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -135,6 +191,10 @@ public class Profil_fragment extends Fragment {
 
             }
         });
+
+
+
+
 
         Edit_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,20 +212,46 @@ public class Profil_fragment extends Fragment {
                     Esi_mail.setError("Ce champs ne doit pas etre vide");
                     return;
                 }
-                User user = new User(Nom.getText().toString(), Prenom.getText().toString(), birth_day.getText().toString(), birth_place.getText().toString(), Esi_mail.getText().toString(), other_mail.getText().toString(),phone_number.getText().toString(),wilaya.getText().toString());
-                try{
-                    profilReference.setValue(user);
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
+
+                UserReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        try {
+
+                            User user= dataSnapshot.getValue(User.class);
+                            try{
+                                if((filePath != null) && !(TextUtils.isEmpty(filePath.toString()))){
+                                    uploadFile(filePath);
+                                }
+                                user.setNom(Nom.getText().toString());
+                                user.setPrenom(Prenom.getText().toString());
+                                user.setEmail(Esi_mail.getText().toString());
+                                user.setOther_email(other_mail.getText().toString());
+                                user.setDate_de_naissance(birth_day.getText().toString());
+                                user.setLieu_de_naissance(birth_place.getText().toString());
+                                user.setWilaya(wilaya.getText().toString());
+                                user.setTelephone(phone_number.getText().toString());
+
+                                UserReference.setValue(user);
+                            }catch(Exception e){
+                                e.printStackTrace();
+                            }
 
 
-                //TODO:
-                /*
-                * UpDate Data
-                *
-                *
-                * */
+
+
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
             }
         });
 
@@ -173,8 +259,10 @@ public class Profil_fragment extends Fragment {
         Cancel_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity().getApplicationContext(), Home_Activity.class));
-                getActivity().finish();
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentLay, new Actualite_fragment());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
         });
 
@@ -194,28 +282,16 @@ public class Profil_fragment extends Fragment {
         progressDialog.setProgress(0);
         progressDialog.show();
 
-        final FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         StorageReference storageReference = storage.getReference();
 
-        storageReference.child(currentUser.getUid()).child("Photo_profil").putFile(filePath)
+        storageReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Photo_profil").putFile(filePath)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
                         String url = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
                         //To store the download url
-
-
-                        try {
-                            Bitmap bitmap;
-                            bitmap = BitmapFactory.decodeStream((InputStream)new URL(url).getContent());
-                            ImageView photo_profil = getActivity().findViewById(R.id.photo_profil);
-                            photo_profil.setImageBitmap(bitmap);
-                        } catch (Exception e) {
-                            Toast.makeText(getContext(),e.toString(),Toast.LENGTH_LONG).show();
-                        }
-
                         UserReference.child("lien_photo_profil").setValue(url);
                         Toast.makeText(getContext(), "Upload Successfully", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
@@ -232,9 +308,13 @@ public class Profil_fragment extends Fragment {
                 .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
-                        // Creating a progress tracker
-                        int currentProgress = (int)(100*taskSnapshot.getBytesTransferred()/taskSnapshot.getTotalByteCount());
-                        progressDialog.setProgress(currentProgress);
+
+                            // Creating a progress tracker
+                            int currentProgress = (int)(100*taskSnapshot.getBytesTransferred()/taskSnapshot.getTotalByteCount());
+                            progressDialog.setProgress(currentProgress);
+
+
+
                     }
                 });
 
@@ -246,6 +326,7 @@ public class Profil_fragment extends Fragment {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, 86);
+       // Picasso.get().load(filePath).into((ImageView) getActivity().findViewById(R.id.Preview_profil_profil_dialog));
     }
 
     @Override
@@ -264,12 +345,9 @@ public class Profil_fragment extends Fragment {
 
         if(requestCode == 86 && resultCode == getActivity().RESULT_OK && data != null) {
             filePath = data.getData();
-
         }else{
             Toast.makeText(getContext(), "Select a file", Toast.LENGTH_SHORT).show();
         }
-
-
     }
     
     

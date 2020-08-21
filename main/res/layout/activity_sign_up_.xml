@@ -45,77 +45,169 @@
             android:layout_marginBottom="10dp"
 
             />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:fillViewport="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginBottom="-50dp">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/Nom_SignUp"
-            android:hint="Entrer votre nom"
-            android:textAlignment="center"
-            android:gravity="center_horizontal"
-            android:layout_margin="5dp"
-            android:layout_marginTop="10dp"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/Preom_SignUp"
-            android:hint="Entrer votre prénom"
-            android:textAlignment="center"
-            android:gravity="center_horizontal"
-            android:layout_margin="5dp"/>
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/Niveau_Etude"
-            android:textAlignment="center"
-            android:gravity="center_horizontal"
-            android:id="@+id/Niveau_SignUp"
-            android:layout_margin="5dp"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/Email_Esi_SignUp"
-            android:hint="Entrer votre Email"
-            android:textAlignment="center"
-            android:gravity="center_horizontal"
-            android:inputType="textEmailAddress"
-            android:layout_margin="5dp"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/MotDePasse_SignUp"
-            android:hint="Entrer un mot de passe"
-            android:textAlignment="center"
-            android:gravity="center_horizontal"
-            android:inputType="textPassword"
-            android:layout_margin="5dp"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_burders"
-            android:text="Confirmer"
-            android:id="@+id/confirm_button"
-            android:layout_margin="10dp"
-            />
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:textAlignment="center"
-            android:layout_gravity="center"
-            android:layout_margin="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Vous avez un compte?"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" connecter-Vous ici"/>
-        </LinearLayout>
+                <TextView
+                    android:layout_width="350dp"
+                    android:layout_height="40dp"
+                    android:text="Nom"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/Black"
+                    android:textSize="18dp"
+                    />
+                <EditText
+                    android:layout_width="350dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/Nom_SignUp"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"
+                    android:layout_margin="5dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edittext_border"
+                    />
+                <TextView
+                    android:layout_width="350dp"
+                    android:layout_height="40dp"
+                    android:text="Prénom"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/Black"
+                    android:textSize="18dp"
+                    />
+                <EditText
+                    android:layout_width="350dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/Prenom_SignUp"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/edittext_border"/>
+                <Spinner
+                    android:layout_width="350dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:entries="@array/Genre"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/Genre_SignUp"
+                    android:layout_margin="5dp"
+                    />
+                <LinearLayout
+                    android:layout_width="400dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    >
+                    <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:entries="@array/Niveau_Etude"
+                        android:textAlignment="center"
+                        android:gravity="center_horizontal"
+                        android:id="@+id/Niveau_SignUp"
+                       />
+                    <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textAlignment="center"
+                        android:gravity="center_horizontal"
+                        android:id="@+id/Specialite_SignUp"
+                        android:entries="@array/Specialite_Etude"
+                        />
+                </LinearLayout>
+
+
+
+                <TextView
+                    android:layout_width="350dp"
+                    android:layout_height="40dp"
+                    android:text="Email"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/Black"
+                    android:textSize="18dp"
+                    />
+                <EditText
+                    android:layout_width="350dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/Email_Esi_SignUp"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"
+                    android:inputType="textEmailAddress"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/edittext_border"/>
+
+
+
+
+
+                <TextView
+                    android:layout_width="350dp"
+                    android:layout_height="40dp"
+                    android:text="Mot de Passe"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/Black"
+                    android:textSize="18dp"
+                    />
+                <EditText
+                    android:layout_width="350dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/MotDePasse_SignUp"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"
+                    android:inputType="textPassword"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/edittext_border"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_burders"
+                    android:text="Confirmer"
+                    android:id="@+id/confirm_button"
+                    android:layout_margin="10dp"
+                    />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vous avez un compte?"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" connecter-Vous ici"
+                        android:id="@+id/connexion_text_Signup"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+
+
+
 
 
 

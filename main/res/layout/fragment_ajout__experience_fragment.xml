@@ -98,6 +98,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:layout_marginRight="5dp"
+                android:inputType="date"
                 android:background="@drawable/edittext_border"
                 android:id="@+id/DateDebut_Edittext_Ajout_experience"
 
@@ -107,6 +108,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:layout_marginLeft="5dp"
+                android:inputType="date"
                 android:background="@drawable/edittext_border"
                 android:id="@+id/DateFin_Edittext_Ajout_experience"
                 />
@@ -124,7 +126,7 @@
                 android:background="@drawable/button_burders"
                 android:backgroundTint="#C0C0C0"
                 android:layout_marginRight="5dp"
-                android:text="Annuler"
+                android:text="Retour"
                 android:id="@+id/Annuler_Button_Ajout_experience"
                 />
             <Button
@@ -143,7 +145,7 @@
             android:gravity="center_vertical"
             android:layout_margin="20dp"
             android:background="@drawable/button_burders"
-            android:text="Consulter mon Cv"
+            android:text="Consulter mes experiences"
             android:textAlignment="center"
             tools:ignore="RtlCompat"
             android:id="@+id/Consulter_Button_Ajout_experience"

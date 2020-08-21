@@ -1,21 +1,33 @@
 package com.esi.esihub.Helper_classes;
 
 public class Formation {
-    private String Nom, Domaine, Etablissement, Certificat, DateFin;
+    private String Nom, Domaine, Etablissement, Certificat, DateFin, DateDebut;
 
-    public Formation(String nom, String domaine, String etablissement, String certificat, String date) {
+    public Formation(String nom, String domaine, String etablissement, String certificat, String dateFin, String dateDebut) {
         Nom = nom;
         Domaine = domaine;
         Etablissement = etablissement;
         Certificat = certificat;
-        DateFin = date;
+        DateFin = dateFin;
+        DateDebut = dateDebut;
     }
 
-    public String getDate() {
+    public Formation() {
+    }
+
+    public String getDateDebut() {
+        return DateDebut;
+    }
+
+    public void setDateDebut(String dateDebut) {
+        DateDebut = dateDebut;
+    }
+
+    public String getDateFin() {
         return DateFin;
     }
 
-    public void setDate(String date) {
+    public void setDateFin(String date) {
         DateFin  = date;
     }
 

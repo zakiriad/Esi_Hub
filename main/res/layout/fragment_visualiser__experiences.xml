@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CV_Details.Visualiser_Experiences">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="650dp"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        >
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:textSize="20dp"
+            android:textColor="@color/Black"
+            android:text="Vos Experiences"
+            android:layout_marginBottom="20dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Vis_experiences_mainlayout"
+            android:orientation="vertical">
+
+        </LinearLayout>
+        <Button
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:background="@drawable/button_burders"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="Retour"
+            android:id="@+id/Retour_Button_vis_experiences"
+            />
+
+    </LinearLayout>
+
+</FrameLayout>

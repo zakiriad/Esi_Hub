@@ -30,10 +30,12 @@
             android:layout_gravity="center_horizontal"
             android:gravity="start"
             android:textSize="17dp"
+            android:textAlignment="textStart"
+            android:paddingStart="5dp"
             android:textColor="#000"
             android:background="@drawable/edittext_border"
             android:id="@+id/Apropos_Edittext_apropos"
-            />
+            android:paddingLeft="5dp" />
         <TextView
             android:layout_width="350dp"
             android:layout_height="40dp"

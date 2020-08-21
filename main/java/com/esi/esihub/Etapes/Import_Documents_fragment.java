@@ -1,5 +1,7 @@
 package com.esi.esihub.Etapes;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -10,6 +12,8 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -43,7 +47,7 @@ public class Import_Documents_fragment extends Fragment {
     private Button Choisir_Memoire, Choisir_Projet, Annuler, Confirmer;
     private CheckBox Validation;
     private ProgressDialog progressDialog;
-    private FirebaseStorage storage;
+    private FirebaseStorage storage = FirebaseStorage.getInstance();
     private Uri filePath_memoire, filePath_projet;
     private DatabaseReference UserReference;
 
@@ -77,13 +81,35 @@ public class Import_Documents_fragment extends Fragment {
         Choisir_Projet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectZip();
+                if(ContextCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+                    //File Selecter
+                    selectZip();
+                }else{
+                    try{
+                        ActivityCompat.requestPermissions((Activity) getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 9);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+
+
+
             }
         });
         Choisir_Memoire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectPdf();
+                if(ContextCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+                    //File Selecter
+                    selectPdf();
+                }else{
+                    try{
+                        ActivityCompat.requestPermissions((Activity) getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 9);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+
             }
         });
         Confirmer.setOnClickListener(new View.OnClickListener() {
@@ -145,12 +171,20 @@ public class Import_Documents_fragment extends Fragment {
 
                         String url = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
                         //To store the download url
+                        if(fileName == "Memoire"){
+                            UserReference.child("lien_Memoire").setValue(url);
 
-                        UserReference.child(currentUser.getUid()).child(fileName).setValue(url);
+                        }else{
+                            UserReference.child("lien_Projet").setValue(url);
+
+
+                            FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                            fragmentTransaction.replace(R.id.fragmentLay, new Suivie_etape_physique_fragment());
+                            fragmentTransaction.addToBackStack(null);
+                            fragmentTransaction.commit();
+                        }
                         Toast.makeText(getContext(), "Upload Successfully", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getContext(),Import_Documents_fragment.class);
-                        startActivity(intent);
-                        getActivity().finish();
+
 
                     }
                 })

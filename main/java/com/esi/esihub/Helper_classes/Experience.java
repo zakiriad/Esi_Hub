@@ -10,6 +10,9 @@ public class Experience {
         this.dateFin = dateFin;
     }
 
+    public Experience() {
+    }
+
     public String getNom() {
         return Nom;
     }

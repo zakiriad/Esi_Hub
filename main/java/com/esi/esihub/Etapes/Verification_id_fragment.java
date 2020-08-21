@@ -1,5 +1,6 @@
 package com.esi.esihub.Etapes;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -9,10 +10,13 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +48,7 @@ public class Verification_id_fragment extends Fragment {
     private  DatabaseReference UserReference;
     private Uri filePath;
     private ProgressDialog progressDialog;
-    private FirebaseStorage storage;
+    private FirebaseStorage storage = FirebaseStorage.getInstance();
 
 
     public Verification_id_fragment() {}
@@ -65,7 +69,16 @@ public class Verification_id_fragment extends Fragment {
         Choisir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectPdf();
+                if(ContextCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+                    //File Selecter
+                    selectPdf();
+                }else{
+                    try{
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 9);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
             }
         });
         Confirmer.setOnClickListener(new View.OnClickListener() {
@@ -81,8 +94,13 @@ public class Verification_id_fragment extends Fragment {
                     PopUp.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            UserReference.child("Numero_Carte_Etudiant").setValue(Numero_id.getText().toString());
-                            uploadFile(filePath, "Carte_Etudiant");
+                            try {
+                                UserReference.child("Numero_Carte_Etudiant").setValue(Numero_id.getText().toString());
+                                uploadFile(filePath);
+                            }catch (Exception e){
+                                Log.e("exception 1", e.toString());
+                            }
+
                         }
                     });
                     PopUp.setNegativeButton("Non", new DialogInterface.OnClickListener() {
@@ -132,7 +150,7 @@ public class Verification_id_fragment extends Fragment {
         startActivityForResult(intent, 1);
     }
 
-    private void uploadFile(Uri filePath, final String fileName) {
+    private void uploadFile(Uri filePath) {
 
         // Show
         progressDialog = new ProgressDialog(getActivity());
@@ -145,7 +163,7 @@ public class Verification_id_fragment extends Fragment {
 
         StorageReference storageReference = storage.getReference();
 
-        storageReference.child(currentUser.getUid()).child(fileName).putFile(filePath)
+        storageReference.child(currentUser.getUid()).child("Carte_etudiant").putFile(filePath)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -153,11 +171,13 @@ public class Verification_id_fragment extends Fragment {
                         String url = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
                         //To store the download url
 
-                        UserReference.child(currentUser.getUid()).child(fileName).setValue(url);
+                        UserReference.child("lien_carte_etudiant").setValue(url);
                         Toast.makeText(getContext(), "Upload Successfully", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getContext(),Import_Documents_fragment.class);
-                        startActivity(intent);
-                        getActivity().finish();
+
+                        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.fragmentLay, new Import_Documents_fragment());
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
 
                     }
                 })

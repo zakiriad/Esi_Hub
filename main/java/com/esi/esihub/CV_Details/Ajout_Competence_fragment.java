@@ -72,7 +72,7 @@ public class Ajout_Competence_fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentLay, new Resume_fragment());
+                fragmentTransaction.replace(R.id.fragmentLay, new Visualiser_competences());
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }

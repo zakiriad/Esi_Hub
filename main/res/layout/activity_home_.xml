@@ -13,12 +13,14 @@
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"
-            android:layout_width="350dp"
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|bottom"
             app:itemTextColor="#FFF"
             android:background="@drawable/button_burders"
-
+            app:itemIconTint="@color/Black"
+            android:scrollbarDefaultDelayBeforeFade="500"
+            app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
             app:menu="@menu/menu_bas_page"
             />
     </FrameLayout>
@@ -30,7 +32,6 @@
         app:headerLayout="@layout/menu_lateral_header"
         android:layout_gravity="start"
         android:backgroundTint="@color/backgroundColor"
-
         >
 
 

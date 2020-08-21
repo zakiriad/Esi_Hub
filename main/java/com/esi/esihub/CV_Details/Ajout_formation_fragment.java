@@ -43,15 +43,9 @@ public class Ajout_formation_fragment extends Fragment {
     private Uri filePath;
     private ProgressDialog progressDialog;
     private FirebaseStorage storage;
-    private EditText Nom = getActivity().findViewById(R.id.Nom_Edittext_Ajout_formation),
-            Etablissement= getActivity().findViewById(R.id.etablissement_Edittext_Ajout_formation),
-            Domaine= getActivity().findViewById(R.id.Domaine_Edittext_Ajout_formation),
-            DateFin = getActivity().findViewById(R.id.Date_Edittext_Ajout_formation);
-    Button Choisir= getActivity().findViewById(R.id.select_Button_Ajout_formation),
-            Annuler = getActivity().findViewById(R.id.Annuler_Button_Ajout_formation),
-            Ajouter = getActivity().findViewById(R.id.Ajouter_Button_Ajout_formation),
-            Consulter= getActivity().findViewById(R.id.VoirFormation_Button_Ajout_formation);
-    TextView NomFichier= getActivity().findViewById(R.id.fichier_Text_Ajout_formation);
+    private EditText Nom, Etablissement, Domaine,DateFin, DateDebut;
+    Button Choisir, Annuler, Ajouter, Consulter;
+    TextView NomFichier;
 
 
     final DatabaseReference ResumeReference = FirebaseDatabase.getInstance().getReference("Liste_Etudiants").child("Resumes").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -66,6 +60,18 @@ public class Ajout_formation_fragment extends Fragment {
     @Override
     public void onStart(){
         super.onStart();
+
+
+        Nom = getActivity().findViewById(R.id.Nom_Edittext_Ajout_formation);
+        Etablissement= getActivity().findViewById(R.id.etablissement_Edittext_Ajout_formation);
+        Domaine= getActivity().findViewById(R.id.Domaine_Edittext_Ajout_formation);
+        DateFin = getActivity().findViewById(R.id.DateFin_Edittext_Ajout_formation);
+        DateDebut = getActivity().findViewById(R.id.DateDebut_Edittext_Ajout_formation);
+        Choisir= getActivity().findViewById(R.id.select_Button_Ajout_formation);
+        Annuler = getActivity().findViewById(R.id.Annuler_Button_Ajout_formation);
+        Ajouter = getActivity().findViewById(R.id.Ajouter_Button_Ajout_formation);
+        Consulter= getActivity().findViewById(R.id.VoirFormation_Button_Ajout_formation);
+        NomFichier= getActivity().findViewById(R.id.fichier_Text_Ajout_formation);
 
 
 
@@ -83,7 +89,7 @@ public class Ajout_formation_fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragmentLay, new Resume_fragment());
+                transaction.replace(R.id.fragmentLay, new Visualiser_formations());
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
@@ -96,13 +102,10 @@ public class Ajout_formation_fragment extends Fragment {
             public void onClick(View v) {
                 if(ContextCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
                     //File Selecter
-                    Intent intent = new Intent();
-                    intent.setType("application/pdf");
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                    startActivityForResult(intent, 86);
+                    selectPdf();
                 }else{
                     try{
-                        ActivityCompat.requestPermissions((Activity) getActivity().getApplicationContext(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 9);
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 9);
                     }catch (Exception e){
                         e.printStackTrace();
                     }
@@ -130,6 +133,10 @@ public class Ajout_formation_fragment extends Fragment {
                     DateFin.setError("Champs requis");
                     return;
                 }
+                if(TextUtils.isEmpty(DateDebut.getText().toString())){
+                    DateDebut.setError("Champs requis");
+                    return;
+                }
                 if(filePath == null){
                     NomFichier.setError("selectionner un fichier");
                     return;
@@ -154,16 +161,18 @@ public class Ajout_formation_fragment extends Fragment {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(requestCode == 9 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-            Intent intent = new Intent();
-            intent.setType("application/pdf");
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(intent, 86);
+            selectPdf();
         }else{
             Toast.makeText(getActivity().getApplicationContext(), "please provide a permission", Toast.LENGTH_SHORT).show();
 
         }
     }
-
+    private void selectPdf() {
+        Intent intent = new Intent();
+        intent.setType("application/pdf");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, 86);
+    }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -195,7 +204,7 @@ public class Ajout_formation_fragment extends Fragment {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         String url = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
-                        Formation formation = new Formation(Nom.getText().toString(), Domaine.getText().toString(),Etablissement.getText().toString(),url,DateFin.getText().toString());
+                        Formation formation = new Formation(Nom.getText().toString(), Domaine.getText().toString(),Etablissement.getText().toString(),url,DateFin.getText().toString(), DateDebut.getText().toString());
                         ResumeReference.child("Formations").child(formation.getNom()).setValue(formation);
 
                     }

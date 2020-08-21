@@ -1,16 +1,11 @@
 package com.esi.esihub.Helper_classes;
 
-import android.widget.LinearLayout;
 
-import com.google.firebase.database.Exclude;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class User {
-    private String Nom, Prenom, Date_de_naissance, Lieu_de_naissance,email, other_email, telephone, wilaya;
-    private String Promotion, lien_Memoire, lien_Projet;
-    private int Niveau, Numero_Projet;
+    private String Nom, Prenom, Date_de_naissance, Lieu_de_naissance,email, other_email, telephone, wilaya, genre;
+    private String Promotion, lien_Memoire, lien_Projet, lien_photo_profil,lien_carte_etudiant, specialite;
+    private int niveau, numero_Projet, numero_carte_etudiant;
     private Boolean confirmer_Dossier;
 
 
@@ -25,39 +20,64 @@ public class User {
         this.wilaya = wilaya;
     }
 
-    public User(String nom, String prenom, String email, int niveau, Boolean confirmer_Dossier) {
+    public User(String nom, String prenom, String email, int Niveau, String genre, Boolean confirmer_Dossier) {
         Nom = nom;
         Prenom = prenom;
         this.email = email;
-        Niveau = niveau;
+        niveau = Niveau;
         this.confirmer_Dossier = confirmer_Dossier;
-        Promotion = "";
+        this.genre = genre;
+        /*Promotion = "";
         lien_Memoire = "";
         lien_Projet = "";
         Date_de_naissance = "";
-        Numero_Projet = 0;
+        numero_Projet = 0;
         other_email = "";
         telephone = "";
         wilaya = "";
         Lieu_de_naissance = "";
+        lien_photo_profil = "";
+        numero_carte_etudiant = 0;
+        specialite = "";
+        lien_carte_etudiant="";*/
     }
+
+
+
     public User(){
 
     }
-    /*@Exclude
-    public Map<String, Object> toMap(){
-        HashMap<String, Object> result = new HashMap<>();
-        result.put("Nom",Nom);
-        result.put("Prenom",Prenom);
-        result.put("email", email);
-        result.put("other_email", other_email);
-        result.put("telephone", telephone);
-        result.put("wilaya",wilaya);
-        result.put("Lieu_de_naissance", Lieu_de_naissance);
-        result.put("Date_de_naissance", Date_de_naissance);
+    public String getSpecialite() {
+        return specialite;
+    }
 
-        return result;
-    }*/
+    public void setSpecialite(String specialite) {
+        this.specialite = specialite;
+    }
+
+    public int getnumero_carte_etudiant() {
+        return numero_carte_etudiant;
+    }
+
+    public void setnumero_carte_etudiant(int Numero_carte_etudiant) {
+        numero_carte_etudiant = Numero_carte_etudiant;
+    }
+
+    public String getLien_carte_etudiant() {
+        return lien_carte_etudiant;
+    }
+
+    public void setLien_carte_etudiant(String lien_carte_etudiant) {
+        this.lien_carte_etudiant = lien_carte_etudiant;
+    }
+
+    public String getLien_photo_profil() {
+        return lien_photo_profil;
+    }
+
+    public void setLien_photo_profil(String lien_photo_profil) {
+        this.lien_photo_profil = lien_photo_profil;
+    }
     public String getLieu_de_naissance() {
         return Lieu_de_naissance;
     }
@@ -147,19 +167,19 @@ public class User {
     }
 
     public int getNiveau() {
-        return Niveau;
+        return niveau;
     }
 
-    public void setNiveau(int niveau) {
-        Niveau = niveau;
+    public void setNiveau(int Niveau) {
+        niveau = Niveau;
     }
 
-    public int getNumero_Projet() {
-        return Numero_Projet;
+    public int getnumero_Projet() {
+        return numero_Projet;
     }
 
-    public void setNumero_Projet(int numero_Projet) {
-        Numero_Projet = numero_Projet;
+    public void setnumero_Projet(int numero_Projet) {
+        numero_Projet = numero_Projet;
     }
 
     public Boolean getConfirmer_Dossier() {
@@ -169,4 +189,8 @@ public class User {
     public void setConfirmer_Dossier(Boolean confirmer_Dossier) {
         this.confirmer_Dossier = confirmer_Dossier;
     }
+
+
+
+
 }
