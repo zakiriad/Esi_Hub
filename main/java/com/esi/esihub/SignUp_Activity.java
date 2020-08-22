@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,8 +22,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class SignUp_Activity extends AppCompatActivity {
 
@@ -102,44 +108,105 @@ public class SignUp_Activity extends AppCompatActivity {
                     return;
                 }
 
+                DatabaseReference Liste_Emails;
+                switch (Niveau_selected){
+                    case 1:
+                        Liste_Emails = FirebaseDatabase.getInstance().getReference("1CPI");
+                        break;
+                    case 2:
+                        Liste_Emails = FirebaseDatabase.getInstance().getReference("2CPI");
+                        break;
+                    case 3:
+                        Liste_Emails = FirebaseDatabase.getInstance().getReference("1CS");
+                        break;
+                    case 4:
+                        Liste_Emails = FirebaseDatabase.getInstance().getReference("2CS");
+                        break;
+                    case 5:
+                        Liste_Emails = FirebaseDatabase.getInstance().getReference("3CS");
+                        break;
+                    default:
+                        Liste_Emails = FirebaseDatabase.getInstance().getReference("3CS");
+                        break;
+                }
+                Toast.makeText(getApplicationContext(), Liste_Emails.toString(),Toast.LENGTH_LONG).show();
+                Query searchQuery =  Liste_Emails.orderByKey().equalTo(email.getText().toString()+"\r");
+                final boolean[] found = {false};
+                searchQuery.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        try{
 
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(email_content, MotDePasse_content)
-                        .addOnCompleteListener(SignUp_Activity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if(!task.isSuccessful()){
-
-                                }else{
-
-                                    Resume resume = new Resume(nom_content, prenom_content, email_content, Niveau_selected, false,"",Genre);
-                                    User user = new User(nom_content, prenom_content, email_content, Niveau_selected,Genre, false);
-                                    Verification_Dossier verificationDossier = new Verification_Dossier();
-
-                                    if(Niveau_selected >= 4){
-                                        user.setSpecialite(Specialite_selected);
-                                        resume.setSpecialite(Specialite_selected);
-                                    }
-                                    UserReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
-                                    ResumeReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(resume);
-                                    VerificationReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(verificationDossier);
-
-                                    try{
-                                        ResumeReference.child("Langues").push();
-                                        ResumeReference.child("Experiences").push();
-                                        ResumeReference.child("Competences").push();
-                                        ResumeReference.child("Formations").push();
-                                    }catch (Exception e){
-                                        e.printStackTrace();
-                                    }
-
-
-
-                                    startActivity(new Intent(getApplicationContext(), LogIn_Activity.class));
-                                    finish();
-
-                                }
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                String email_item = snapshot.getValue(String.class);
+                                Toast.makeText(getApplicationContext(), email_item,Toast.LENGTH_LONG).show();
+                                if (email_item.equals(email_content)) found[0] = true;
                             }
-                        });
+
+                        }catch (Exception e){
+                            Toast.makeText(getApplicationContext(), e.toString(),Toast.LENGTH_LONG).show();
+                            Log.e("error_Query", e.toString());
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (found[0]) {
+                            //Create the user
+                            FirebaseAuth.getInstance().createUserWithEmailAndPassword(email_content, MotDePasse_content)
+                                    .addOnCompleteListener(SignUp_Activity.this, new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                            if (!task.isSuccessful()) {
+
+                                            } else {
+
+                                                Resume resume = new Resume(nom_content, prenom_content, email_content, Niveau_selected, false, "", Genre);
+                                                User user = new User(nom_content, prenom_content, email_content, Niveau_selected, Genre, false);
+                                                Verification_Dossier verificationDossier = new Verification_Dossier();
+
+                                                if (Niveau_selected >= 4) {
+                                                    user.setSpecialite(Specialite_selected);
+                                                    resume.setSpecialite(Specialite_selected);
+                                                }
+                                                UserReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
+                                                ResumeReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(resume);
+                                                VerificationReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(verificationDossier);
+
+                                                try {
+                                                    ResumeReference.child("Langues").push();
+                                                    ResumeReference.child("Experiences").push();
+                                                    ResumeReference.child("Competences").push();
+                                                    ResumeReference.child("Formations").push();
+                                                } catch (Exception e) {
+                                                    e.printStackTrace();
+                                                }
+
+
+                                                startActivity(new Intent(getApplicationContext(), LogIn_Activity.class));
+                                                finish();
+
+                                            }
+                                        }
+                                    });
+                            //
+                        } else {
+                            Toast.makeText(getApplicationContext(), "cette adresse est introuvable", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                },10000);
+
+
+
+
+
+
 
 
             }
