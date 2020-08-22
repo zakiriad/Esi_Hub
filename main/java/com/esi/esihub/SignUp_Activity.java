@@ -130,17 +130,17 @@ public class SignUp_Activity extends AppCompatActivity {
                         break;
                 }
                 Toast.makeText(getApplicationContext(), Liste_Emails.toString(),Toast.LENGTH_LONG).show();
-                Query searchQuery =  Liste_Emails.orderByKey().equalTo(email.getText().toString()+"\r");
+                //Query searchQuery =  Liste_Emails.orderByKey().equalTo(email.getText().toString()+"\r");
                 final boolean[] found = {false};
-                searchQuery.addValueEventListener(new ValueEventListener() {
+                Liste_Emails.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         try{
 
                             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                 String email_item = snapshot.getValue(String.class);
-                                Toast.makeText(getApplicationContext(), email_item,Toast.LENGTH_LONG).show();
-                                if (email_item.equals(email_content)) found[0] = true;
+                                Toast.makeText(getApplicationContext(), email_item + found[0],Toast.LENGTH_LONG).show();
+                                if (email_item.contains(email_content)) found[0] = true;
                             }
 
                         }catch (Exception e){
@@ -150,9 +150,11 @@ public class SignUp_Activity extends AppCompatActivity {
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
                     }
                 });
+
+
+
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -199,9 +201,9 @@ public class SignUp_Activity extends AppCompatActivity {
                         } else {
                             Toast.makeText(getApplicationContext(), "cette adresse est introuvable", Toast.LENGTH_LONG).show();
                         }
+
                     }
                 },10000);
-
 
 
 
