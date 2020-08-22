@@ -1,9 +1,22 @@
 (function(){
-    firebase.auth().onAuthStateChanged(function(user){
-    if (!user){
-        document.open("login.html","_self");
-    }
-  });
+    try{
+        firebase.auth().onAuthStateChanged(function(user){
+            
+                if(user != null){
+                    if (user){
+                    }else if(document.title != "Page de connexion"){
+                        window.location.replace("login.html");
+                    }
+                }else if(document.title != "Page de connexion"){
+                    window.location.replace("login.html");
+                    
+                }
+            
+        
+        });
+    }catch(error){
+        alert(error);
+    };
 })();
 
 
