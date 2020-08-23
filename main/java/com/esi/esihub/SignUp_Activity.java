@@ -129,8 +129,8 @@ public class SignUp_Activity extends AppCompatActivity {
                         Liste_Emails = FirebaseDatabase.getInstance().getReference("3CS");
                         break;
                 }
-                Toast.makeText(getApplicationContext(), Liste_Emails.toString(),Toast.LENGTH_LONG).show();
-                //Query searchQuery =  Liste_Emails.orderByKey().equalTo(email.getText().toString()+"\r");
+
+
                 final boolean[] found = {false};
                 Liste_Emails.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -139,12 +139,10 @@ public class SignUp_Activity extends AppCompatActivity {
 
                             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                 String email_item = snapshot.getValue(String.class);
-                                Toast.makeText(getApplicationContext(), email_item + found[0],Toast.LENGTH_LONG).show();
                                 if (email_item.contains(email_content)) found[0] = true;
                             }
 
                         }catch (Exception e){
-                            Toast.makeText(getApplicationContext(), e.toString(),Toast.LENGTH_LONG).show();
                             Log.e("error_Query", e.toString());
                         }
                     }

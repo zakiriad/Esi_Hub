@@ -43,6 +43,10 @@
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="20dp"
             />
+
+
+
+
         <TextView
             android:layout_width="350dp"
             android:layout_height="40dp"
@@ -59,7 +63,12 @@
             android:background="@drawable/edittext_border"
             android:id="@+id/Email_Login"
             android:layout_margin="10dp"
-            />
+            android:paddingStart="5dp"
+            android:paddingLeft="5dp" />
+
+
+
+
         <TextView
             android:layout_width="350dp"
             android:layout_height="40dp"
@@ -76,7 +85,14 @@
             android:background="@drawable/edittext_border"
             android:inputType="textPassword"
             android:id="@+id/MotDePasse_Login"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:paddingStart="5dp"
+            android:paddingLeft="5dp" />
+
+
+
+
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,6 +100,8 @@
             android:text="Connexion"
             android:background="@drawable/button_burders"
             android:layout_margin="10dp"/>
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -91,6 +109,8 @@
             android:text="Mot de passe Oublié ?"
             android:id="@+id/mdp_perdu_text"
             />
+
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

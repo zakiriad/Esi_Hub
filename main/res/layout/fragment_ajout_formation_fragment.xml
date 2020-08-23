@@ -22,6 +22,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="20dp"
             />
+
+
         <TextView
             android:layout_width="350dp"
             android:layout_height="40dp"
@@ -37,7 +39,11 @@
             android:background="@drawable/edittext_border"
             android:layout_marginBottom="10dp"
             android:id="@+id/Nom_Edittext_Ajout_formation"
+            android:paddingLeft="5dp"
             />
+
+
+
         <TextView
             android:layout_width="350dp"
             android:layout_height="40dp"
@@ -53,7 +59,12 @@
             android:background="@drawable/edittext_border"
             android:layout_marginBottom="10dp"
             android:id="@+id/etablissement_Edittext_Ajout_formation"
+            android:paddingLeft="5dp"
             />
+
+
+
+
         <TextView
             android:layout_width="350dp"
             android:layout_height="40dp"
@@ -69,6 +80,7 @@
             android:background="@drawable/edittext_border"
             android:layout_marginBottom="20dp"
             android:id="@+id/Domaine_Edittext_Ajout_formation"
+            android:paddingLeft="5dp"
             />
 
 
@@ -86,18 +98,20 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:layout_marginRight="5dp"
-                android:text="Date Debut"
+                android:text="Anne de debut"
                 android:textSize="19dp"
                 android:textColor="#000"
+
                 />
             <TextView
                 android:layout_width="170dp"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:layout_marginLeft="5dp"
-                android:text="Date Fin"
+                android:text="Annee de fin"
                 android:textSize="19dp"
                 android:textColor="#000"
+
                 />
 
         </LinearLayout>
@@ -117,7 +131,7 @@
                 android:inputType="date"
                 android:background="@drawable/edittext_border"
                 android:id="@+id/DateDebut_Edittext_Ajout_formation"
-
+                android:paddingLeft="5dp"
                 />
             <EditText
                 android:layout_width="170dp"
@@ -127,6 +141,7 @@
                 android:inputType="date"
                 android:background="@drawable/edittext_border"
                 android:id="@+id/DateFin_Edittext_Ajout_formation"
+                android:paddingLeft="5dp"
                 />
 
 

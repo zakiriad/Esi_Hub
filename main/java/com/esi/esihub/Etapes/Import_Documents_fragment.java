@@ -210,8 +210,6 @@ public class Import_Documents_fragment extends Fragment {
     }
 
 
-
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -245,20 +243,13 @@ public class Import_Documents_fragment extends Fragment {
         if(requestCode == 1 && resultCode == getActivity().RESULT_OK && data != null) {
             filePath_memoire = data.getData();
             NomFichier_memoire.setText(data.getData().getLastPathSegment().toString());
-        }else{
-            Toast.makeText(getContext(), "Select a file", Toast.LENGTH_SHORT).show();
         }
         if(requestCode == 2 && resultCode == getActivity().RESULT_OK && data != null) {
             filePath_projet = data.getData();
             NomFichier_projet.setText(data.getData().getLastPathSegment().toString());
-        }else{
-            Toast.makeText(getContext(), "Select a file", Toast.LENGTH_SHORT).show();
         }
 
     }
-
-
-
 
 
     @Override

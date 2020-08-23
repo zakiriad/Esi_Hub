@@ -2,10 +2,10 @@ package com.esi.esihub;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
@@ -20,16 +20,13 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.esi.esihub.CV_Details.Resume_fragment;
 import com.esi.esihub.Etapes.Import_Documents_fragment;
-import com.esi.esihub.Etapes.Not_Concerned_fragment;
 import com.esi.esihub.Etapes.Suivie_etape_physique_fragment;
 import com.esi.esihub.Etapes.Verification_id_fragment;
-import com.esi.esihub.Helper_classes.Resume;
 import com.esi.esihub.Helper_classes.User;
 import com.esi.esihub.Home_Fragments.Actualite_fragment;
 import com.esi.esihub.Home_Fragments.Formation_fragment;
 import com.esi.esihub.Home_Fragments.Job_fragment;
 import com.esi.esihub.Home_Fragments.Profil_fragment;
-import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -41,7 +38,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Picasso;
 
 import static com.esi.esihub.R.*;
 import static com.esi.esihub.R.string.*;
@@ -204,7 +200,11 @@ public class Home_Activity extends AppCompatActivity {
                             break;
                     }
                 }else{
-                    fragmentClass = Not_Concerned_fragment.class;
+                    AlertDialog.Builder PopUp = new AlertDialog.Builder(Home_Activity.this);
+                    PopUp.setTitle("Vous n'êtes pas concernés");
+                    PopUp.setMessage("Cette section ne concerne que les etudiants en fin de formation (5ème Année).");
+                    PopUp.show();
+                    fragmentClass = Actualite_fragment.class;
                 }
 
                 break;

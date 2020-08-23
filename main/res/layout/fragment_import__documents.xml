@@ -39,6 +39,7 @@
             android:gravity="center_vertical"
             android:layout_marginBottom="20dp"
             android:id="@+id/NumeroProjet_import_documents"
+            android:paddingLeft="5dp"
             />
         <TextView
             android:layout_width="350dp"
