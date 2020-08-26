@@ -1,6 +1,7 @@
 package com.esi.esihub.Helper_classes;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +56,9 @@ public class Actualite_adapter  extends BaseAdapter {
         SousTitre.setText(arrayList.get(position).getSousTitre());
         lien.setText(arrayList.get(position).getLien());
 
-        if((arrayList.get(position).getLien_photo() != null)&&(arrayList.get(position).getLien_photo() != "")){
+        if((arrayList.get(position).getLien_photo() != null)&&(!TextUtils.isEmpty(arrayList.get(position).getLien_photo()))){
+            photo.setScaleX(1);
+            photo.setScaleY(1);
             Glide.with(context).load(arrayList.get(position).getLien_photo()).into(photo);
         }
         return convertView;

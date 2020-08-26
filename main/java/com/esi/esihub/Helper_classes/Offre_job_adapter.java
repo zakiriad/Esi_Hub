@@ -1,6 +1,7 @@
 package com.esi.esihub.Helper_classes;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +54,9 @@ public class Offre_job_adapter extends BaseAdapter {
         Societe.setText(arrayList.get(position).getSociete());
         Email.setText(arrayList.get(position).getEmail());
 
-        if((arrayList.get(position).getLien_logo() != null)&&(arrayList.get(position).getLien_logo() != "")){
+        if((arrayList.get(position).getLien_logo() != null)&&(!TextUtils.isEmpty(arrayList.get(position).getLien_logo()) )){
+            logo.setScaleX(1);
+            logo.setScaleY(1);
             Glide.with(context).load(arrayList.get(position).getLien_logo()).into(logo);
         }
 

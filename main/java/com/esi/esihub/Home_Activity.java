@@ -27,6 +27,7 @@ import com.esi.esihub.Home_Fragments.Actualite_fragment;
 import com.esi.esihub.Home_Fragments.Formation_fragment;
 import com.esi.esihub.Home_Fragments.Job_fragment;
 import com.esi.esihub.Home_Fragments.Profil_fragment;
+import com.esi.esihub.Home_Fragments.Rating_fragment;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -207,6 +208,10 @@ public class Home_Activity extends AppCompatActivity {
                     fragmentClass = Actualite_fragment.class;
                 }
 
+                break;
+
+            case id.rate_menu_item:
+                fragmentClass = Rating_fragment.class;
                 break;
 
             default:

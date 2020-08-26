@@ -16,13 +16,14 @@
         android:icon="@drawable/ic_directory"
         />
     <item
+        android:id="@+id/rate_menu_item"
+        android:title="Evaluer l'application"
+        android:icon="@drawable/ic_icon_setting_helps"
+        />
+    <item
         android:id="@+id/Logout_menu_item"
         android:title="Logout"
         android:icon="@drawable/ic_icon_setting_logout"
         />
-    <item
-        android:id="@+id/Apropos_menu_item"
-        android:title="A propos"
-        android:icon="@drawable/ic_icon_setting_helps"
-        />
+
 </menu>

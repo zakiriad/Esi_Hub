@@ -2,9 +2,11 @@ package com.esi.esihub.CV_Details;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -17,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.esi.esihub.Helper_classes.Resume;
 import com.esi.esihub.R;
@@ -67,19 +70,27 @@ public class Apropos_fragment extends Fragment {
                 });
 
                 apropos.addTextChangedListener(new TextWatcher() {
+                @RequiresApi(api = Build.VERSION_CODES.M)
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                     NbrChar.setText(String.valueOf(apropos.getText().toString().length()) +"/500");
+                    if(apropos.getText().toString().length() > 500) NbrChar.setTextColor(getActivity().getColor(R.color.Red));
                 }
 
+                @RequiresApi(api = Build.VERSION_CODES.M)
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     NbrChar.setText(String.valueOf(apropos.getText().toString().length()) +"/500");
+                    if(apropos.getText().toString().length() > 500) NbrChar.setTextColor(getActivity().getColor(R.color.Red));
+
                 }
 
+                @RequiresApi(api = Build.VERSION_CODES.M)
                 @Override
                 public void afterTextChanged(Editable s) {
                     NbrChar.setText(String.valueOf(apropos.getText().toString().length()) +"/500");
+                    if(apropos.getText().toString().length() > 500) NbrChar.setTextColor(getActivity().getColor(R.color.Red));
+
                 }
             });
         }catch (Exception e){
@@ -92,11 +103,16 @@ public class Apropos_fragment extends Fragment {
             public void onClick(View v) {
                 // Save the value to SharedPreference to use it later
                 try{
-                    ResumeReference.child("apropos").setValue(apropos.getText().toString());
-                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.fragmentLay, new Resume_fragment());
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
+                    if(apropos.getText().toString().length() > 500) {
+                        ResumeReference.child("apropos").setValue(apropos.getText().toString());
+                        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.fragmentLay, new Resume_fragment());
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                    }else{
+                        Toast.makeText(getContext(), "Text trop long", Toast.LENGTH_LONG).show();
+                        return;
+                    }
                 }catch (Exception e){
                     e.printStackTrace();
                 }

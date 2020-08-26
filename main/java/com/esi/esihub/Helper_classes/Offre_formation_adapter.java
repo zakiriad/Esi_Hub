@@ -58,6 +58,8 @@ public class Offre_formation_adapter  extends BaseAdapter {
         DateDebut.setText(arrayList.get(position).getDateDebut());
 
         if((arrayList.get(position).getLien_Image() != null)&&(!TextUtils.isEmpty(arrayList.get(position).getLien_Image()))){
+            logo.setScaleX(1);
+            logo.setScaleY(1);
             Glide.with(context).load(arrayList.get(position).getLien_Image()).into(logo);
         }
 
