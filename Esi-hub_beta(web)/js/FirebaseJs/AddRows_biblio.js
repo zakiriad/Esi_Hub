@@ -3,7 +3,7 @@
     var EtudiantsReference = firebase.database().ref().child('Liste_Etudiants');
     EtudiantsReference.once("value", function(snapshot){
         snapshot.forEach(function(child){
-            alert(child.key);
+            
             EtudiantsReference.child(child.key).child('niveau').once("value", function(snap){
                 if(snap.val() == 5){
                     var table = document.getElementById("Liste_Etudiants_Tab_biblio");
