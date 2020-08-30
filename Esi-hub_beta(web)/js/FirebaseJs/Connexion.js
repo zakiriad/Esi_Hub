@@ -1,7 +1,7 @@
 (function(){
     try{
         firebase.auth().onAuthStateChanged(function(user){
-            
+
                 if(user != null){
                     if (user){
                     }else if(document.title != "Page de connexion"){
@@ -9,10 +9,10 @@
                     }
                 }else if(document.title != "Page de connexion"){
                     window.location.replace("login.html");
-                    
+
                 }
-            
-        
+
+
         });
     }catch(error){
         alert(error);
@@ -26,7 +26,8 @@ function login(){
     var pass = document.getElementById("Password_connexion");
     var email = document.getElementById("Email_connexion");
     try{
-        switch(email.value){
+        emailVal = email.value
+        switch(emailVal.toLowerCase()){
             case "admin@esi-sba.dz":
                 firebase.auth().signInWithEmailAndPassword(email.value, pass.value)
                 .then(function(firebaseUser){
@@ -58,11 +59,11 @@ function login(){
                 alert("ce compte n'existe pas");
                 break;
         }
-        
+
     }catch(error){
         console.log(error);
     }
-    
+
 }
 function logout(){
     firebase.auth().signOut();
