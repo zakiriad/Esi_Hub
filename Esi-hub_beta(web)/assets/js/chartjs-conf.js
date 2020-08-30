@@ -1,94 +1,80 @@
 var Script = function () {
-    var nbr_etudiant_1 = 0;
-    var nbr_etudiant_2 = 0;
-    var nbr_etudiant_3 = 0;
-    var nbr_etudiant_4 = 0;
-    var nbr_etudiant_5 = 0;
-    var nbr_etudiant_SIW = 0;
-    var nbr_etudiant_ISI = 0;
-    var nbr_etudiants = 0; 
-    var Etudiants = firebase.database().ref().child("Liste_Etudiants");
-    Etudiants.on("value",function(snapShot){
-        snapShot.forEach(function(child){
-            Etudiants.child(child.key).child("niveau").once("value", function(snap){
-                nbr_etudiants += 1;
-                switch(snap.val()){
-                    case 1:
-                        nbr_etudiant_1 = nbr_etudiant_1 + 1;
-                        break;
-                    case 2:
-                        nbr_etudiant_2 = nbr_etudiant_2 + 1;
-                        break;
-                    case 3:
-                        nbr_etudiant_3 = nbr_etudiant_3 + 1;
-                        break;
-                    case 4:
-                        Etudiants.child(child.key).child("specialite").on("value", function(snap){
-                            if(snap.val() !== null){
-                                if(snap.val() == "SIW"){nbr_etudiant_SIW += 1;}
-                                else{nbr_etudiant_ISI += 1;}
-                            }
-                        });
-                        nbr_etudiant_4 = nbr_etudiant_4 + 1;
-                        break;
-                    case 5:
-                        Etudiants.child(child.key).child("specialite").on("value", function(snap){
-                            if(snap.val() !== null){
-                                if(snap.val() == "SIW"){ nbr_etudiant_SIW += 1;}
-                                else{ nbr_etudiant_ISI =+ 1;}
-                            }
-                        });
-                        nbr_etudiant_5 = nbr_etudiant_5 + 1;
-                        break;
-                };
-                
-                
-            });
+    var speci_etudiant= [0, 0];
+    var nbr_Etudiant = [0,0,0,0,0];
+    var nbr_etudiants = 0;
 
+    function getData(){
+        var Query_Etudiant_5 = firebase.database().ref().child("Liste_Etudiants").orderByChild("niveau").equalTo(5).once("value",function(snap){
+            nbr_Etudiant[4] = snap.numChildren();
         });
-        setData();
+
+        var Query_Etudiant_4 = firebase.database().ref().child("Liste_Etudiants").orderByChild("niveau").equalTo(4).once("value",function(snap){
+            nbr_Etudiant[3] = snap.numChildren();
+            
+        });
+        var Query_Etudiant_3 = firebase.database().ref().child("Liste_Etudiants").orderByChild("niveau").equalTo(3).once("value",function(snap){
+            nbr_Etudiant[2] = snap.numChildren();
         
-    });
-    
-    
-    function setData(){
+        });
+        var Query_Etudiant_2 = firebase.database().ref().child("Liste_Etudiants").orderByChild("niveau").equalTo(2).once("value",function(snap){
+            nbr_Etudiant[1] = snap.numChildren();
+        
+        });
+        var Query_Etudiant_1 = firebase.database().ref().child("Liste_Etudiants").orderByChild("niveau").equalTo(1).once("value",function(snap){
+            nbr_Etudiant[0] = snap.numChildren();
+        
+        });
+
+        var Query_Etudiant_ISI = firebase.database().ref().child("Liste_Etudiants").orderByChild("specialite").equalTo("ISI").once("value",function(snap){
+            speci_etudiant[0] = snap.numChildren();
+        
+        });
+        var Query_Etudiant_SIW = firebase.database().ref().child("Liste_Etudiants").orderByChild("specialite").equalTo("SIW").once("value",function(snap){
+            speci_etudiant[1]= snap.numChildren();
+            
+        });
+        
+          
+        
+    }
+    getData();
+    setTimeout(function(){
         document.getElementById("nbr_users_stats").innerHTML = nbr_etudiants;
+        alert("hello");
         var pieData = [
             {
-                value: nbr_etudiant_ISI,
+                value: speci_etudiant[0],
                 color:"#1abc9c"
             },
             {
-                value : nbr_etudiant_SIW,
+                value : speci_etudiant[1],
                 color : "#16a085"
             }
 
         ];
         var doughnutData = [
             {
-                value: nbr_etudiant_1,
+                value: nbr_Etudiant[0],
                 color:"#1abc9c"
             },
             {
-                value : nbr_etudiant_2,
+                value : nbr_Etudiant[1],
                 color : "#2ecc71"
             },
             {
-                value : nbr_etudiant_3,
+                value : nbr_Etudiant[2],
                 color : "#3498db"
             },
             {
-                value : nbr_etudiant_4,
+                value : nbr_Etudiant[3],
                 color : "#9b59b6"
             },
             {
-                value : nbr_etudiant_5,
+                value : nbr_Etudiant[4],
                 color : "#34495e"
             }
         ];
         new Chart(document.getElementById("doughnut").getContext("2d")).Doughnut(doughnutData);
         new Chart(document.getElementById("pie").getContext("2d")).Pie(pieData);
-    }
-
-
+    }, 2000);
 }();
