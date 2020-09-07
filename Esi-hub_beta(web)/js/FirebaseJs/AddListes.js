@@ -9,9 +9,11 @@
             fr.onload=function(){
                 var Content = fr.result;
                 var arrayEmails = Content.split("\n");
+                var cpt = 1;
                 arrayEmails.forEach((item, index) => {
-                    var email = ListeRef.child(document.getElementById("Niveaux").value).push();
+                    var email = ListeRef.child(document.getElementById("Niveaux").value).child(cpt);
                     if(item.slice(0, - 1) !== "") email.set(item.slice(0, - 1));
+                    cpt += 1;
                     
                     //Upload des emails
                 });

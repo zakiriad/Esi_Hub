@@ -42,7 +42,7 @@
             if((snap.val() != null)&&(snap.val() != "")){
                 var user = localStorage.getItem("user_id");
                 var storageRef = firebase.storage().ref().child(user);
-                storageRef.child("carte_etudiant").getDownloadURL().then(function(url) {
+                storageRef.child("Carte_etudiant").getDownloadURL().then(function(url) {
                     var xhr = new XMLHttpRequest();
                     xhr.responseType = 'blob';
                     xhr.onload = function(event) {
