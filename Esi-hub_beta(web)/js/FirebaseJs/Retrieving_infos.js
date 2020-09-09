@@ -46,20 +46,18 @@
                     var xhr = new XMLHttpRequest();
                     xhr.responseType = 'blob';
                     xhr.onload = function(event) {
-                    var blob = xhr.response;
-
-                    var blob = xhr.response;
-                    var a = document.createElement("a");
-                    document.body.appendChild(a);
-                    var url = window.URL.createObjectURL(blob);
-                    a.href = url;
-                    a.download = "carte_etudiant_"+user;
-                    a.click();
-                    window.URL.revokeObjectURL(url);
-
-
+                        var blob = xhr.response;
+                        var a = document.createElement("a");
+                        document.body.appendChild(a);
+                        var url = window.URL.createObjectURL(blob);
+                        a.href = url;
+                        a.download = "carte_etudiant_"+user;
+                        a.click();
+                        window.URL.revokeObjectURL(url);
                     };
                     xhr.open('GET', url);
+                    xmlhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
+                    xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
                     xhr.send();
 
                     
@@ -81,25 +79,22 @@
             if((snap.val() != "")&&(snap.val() != null)){
                 var user = localStorage.getItem("user_id");
                 var storageRef= firebase.storage().ref().child(user);
-                alert(user);
                 storageRef.child("Projet").getDownloadURL().then(function(url) {
                     var xhr = new XMLHttpRequest();
                     xhr.responseType = 'blob';
                     xhr.onload = function(event) {
-                    var blob = xhr.response;
-
-                    var blob = xhr.response;
-                    var a = document.createElement("a");
-                    document.body.appendChild(a);
-                    var url = window.URL.createObjectURL(blob);
-                    a.href = url;
-                    a.download = "Projet_"+user;
-                    a.click();
-                    window.URL.revokeObjectURL(url);
-
-
+                        var blob = xhr.response;
+                        var a = document.createElement("a");
+                        document.body.appendChild(a);
+                        var url = window.URL.createObjectURL(blob);
+                        a.href = url;
+                        a.download = "Projet_"+user;
+                        a.click();
+                        window.URL.revokeObjectURL(url);
                     };
                     xhr.open('GET', url);
+                    xmlhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
+                    xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
                     xhr.send();
 
                     
@@ -108,7 +103,7 @@
             }else{
                 alert("pas encorer uploader");
             }
-        });
+    });
 
 
     };
@@ -138,6 +133,8 @@
 
                     };
                     xhr.open('GET', url);
+                    xmlhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
+                    xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
                     xhr.send();
 
                     
