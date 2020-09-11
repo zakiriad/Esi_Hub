@@ -40,29 +40,8 @@
     carte_button.onclick = function(){
         EtudiantReference.child("lien_carte_etudiant").on("value", function(snap){
             if((snap.val() != null)&&(snap.val() != "")){
-                var user = localStorage.getItem("user_id");
-                var storageRef = firebase.storage().ref().child(user);
-                storageRef.child("Carte_etudiant").getDownloadURL().then(function(url) {
-                    var xhr = new XMLHttpRequest();
-                    xhr.responseType = 'blob';
-                    xhr.onload = function(event) {
-                        var blob = xhr.response;
-                        var a = document.createElement("a");
-                        document.body.appendChild(a);
-                        var url = window.URL.createObjectURL(blob);
-                        a.href = url;
-                        a.download = "carte_etudiant_"+user;
-                        a.click();
-                        window.URL.revokeObjectURL(url);
-                    };
-                    xhr.open('GET', url);
-                    xmlhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
-                    xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
-                    xhr.send();
-
-                    
-                }).catch(function(error) {
-                });
+                localStorage.setItem("Document", 'Carte_etudiant');
+                window.location.replace("Empty_Download.html");
             }else{
                 alert("pas encore uploader");
             }
@@ -77,29 +56,8 @@
     projet_button.onclick = function(){
         EtudiantReference.child("lien_Projet").on("value", function(snap){
             if((snap.val() != "")&&(snap.val() != null)){
-                var user = localStorage.getItem("user_id");
-                var storageRef= firebase.storage().ref().child(user);
-                storageRef.child("Projet").getDownloadURL().then(function(url) {
-                    var xhr = new XMLHttpRequest();
-                    xhr.responseType = 'blob';
-                    xhr.onload = function(event) {
-                        var blob = xhr.response;
-                        var a = document.createElement("a");
-                        document.body.appendChild(a);
-                        var url = window.URL.createObjectURL(blob);
-                        a.href = url;
-                        a.download = "Projet_"+user;
-                        a.click();
-                        window.URL.revokeObjectURL(url);
-                    };
-                    xhr.open('GET', url);
-                    xmlhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
-                    xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
-                    xhr.send();
-
-                    
-                }).catch(function(error) {
-                });
+                localStorage.setItem("Document", 'Projet');
+                window.location.replace("Empty_Download.html");
             }else{
                 alert("pas encorer uploader");
             }
@@ -112,34 +70,8 @@
     memoire_button.onclick = function(){
         EtudiantReference.child("lien_Memoire").on("value", function(snap){
             if((snap.val() != null) &&(snap.val() != "")){
-                var user = localStorage.getItem("user_id");
-                var storageRef= firebase.storage().ref().child(user);
-                alert(user);
-                storageRef.child("Memoire").getDownloadURL().then(function(url) {
-                    var xhr = new XMLHttpRequest();
-                    xhr.responseType = 'blob';
-                    xhr.onload = function(event) {
-                    var blob = xhr.response;
-
-                    var blob = xhr.response;
-                    var a = document.createElement("a");
-                    document.body.appendChild(a);
-                    var url = window.URL.createObjectURL(blob);
-                    a.href = url;
-                    a.download = "Memoire_"+user;
-                    a.click();
-                    window.URL.revokeObjectURL(url);
-
-
-                    };
-                    xhr.open('GET', url);
-                    xmlhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
-                    xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
-                    xhr.send();
-
-                    
-                }).catch(function(error) {
-                });
+                localStorage.setItem("Document", 'Memoire');
+                window.location.replace("Empty_Download.html");
             }else{
                 alert("pas encorer uploader");
             }
