@@ -2423,8 +2423,10 @@ label {
 .ui-sortable li.list-inverse {
     border-left: 3px solid #BEC3C7;
 }
-
-
+#Fichier_Liste_input{
+    display: flex;
+    justify-content: space-between;
+}
 /*footer*/
 
 .site-footer {

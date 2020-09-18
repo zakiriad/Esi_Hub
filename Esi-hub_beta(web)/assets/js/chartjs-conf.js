@@ -40,7 +40,6 @@ var Script = function () {
     getData();
     setTimeout(function(){
         document.getElementById("nbr_users_stats").innerHTML = nbr_etudiants;
-        alert("hello");
         var pieData = [
             {
                 value: speci_etudiant[0],

@@ -14,6 +14,7 @@
     <!-- Custom styles for this template -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
+    
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -36,6 +37,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-storage.js"></script>
 
     <script>
+
     // Your web app's Firebase configuration
     var firebaseConfig = {
         apiKey: "AIzaSyCaCsX12Zr5NPyOLtL3AcvY7fq4LNTXLII",
@@ -183,8 +185,10 @@
                           <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">La Liste</label>
                             <div class="col-sm-10">
-                                <input type="file" id="Fichier_Liste" accept=".txt">
-                                <!-- <input type="text" class="form-control" id="img_Ajout_Actualite"> -->                             
+                                <div id="Fichier_Liste_input">
+                                    <input type="file" id="Fichier_Liste" accept=".txt">
+                                    <i title="hello" class="glyphicon glyphicon-info-sign"></i>
+                                </div>                     
                             </div>
                           </div>
                         
