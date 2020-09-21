@@ -22,15 +22,20 @@
         android:scaleY="2"
         android:scaleX="2"
         />
-    <LinearLayout
+    <ScrollView
         android:layout_width="490dp"
         android:layout_height="700dp"
+        android:id="@+id/LogIn_Form"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/Background"
-        android:background="@drawable/form_border"
-        android:orientation="vertical"
-        android:id="@+id/LogIn_Form"
         >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+
+        android:background="@drawable/form_border"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
@@ -121,5 +126,5 @@
             android:layout_margin="10dp"/>
 
     </LinearLayout>
-
+    </ScrollView>
 </RelativeLayout>

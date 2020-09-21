@@ -89,7 +89,8 @@ public class Job_fragment extends Fragment {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                             User user = dataSnapshot.getValue(User.class);
-                                            UserReference.child(item.getNom()).child("Interesses").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user.getEmail());
+                                            DatabaseReference offerRef = FirebaseDatabase.getInstance().getReference("Offres").child("Jobs");
+                                            offerRef.child(item.getNom()).child("Interesses").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user.getEmail());
 
                                         }
 

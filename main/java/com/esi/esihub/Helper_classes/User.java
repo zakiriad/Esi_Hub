@@ -6,7 +6,7 @@ public class User {
     private String Nom, Prenom, Date_de_naissance, Lieu_de_naissance,email, other_email, telephone, wilaya, genre;
     private String Promotion, lien_Memoire, lien_Projet, lien_photo_profil,lien_carte_etudiant, specialite;
     private int niveau, numero_Projet, numero_carte_etudiant;
-    private Boolean confirmer_Dossier;
+    private Boolean confirmer_Dossier, Alumni;
 
 
     public User(String nom, String prenom, String date_de_naissance, String lieu_de_naissance, String email, String other_email, String telephone, String wilaya) {
@@ -27,26 +27,45 @@ public class User {
         niveau = Niveau;
         this.confirmer_Dossier = confirmer_Dossier;
         this.genre = genre;
-        /*Promotion = "";
-        lien_Memoire = "";
-        lien_Projet = "";
-        Date_de_naissance = "";
-        numero_Projet = 0;
-        other_email = "";
-        telephone = "";
-        wilaya = "";
-        Lieu_de_naissance = "";
-        lien_photo_profil = "";
-        numero_carte_etudiant = 0;
-        specialite = "";
-        lien_carte_etudiant="";*/
     }
 
 
+    public Boolean getAlumni() {
+        return Alumni;
+    }
+
+    public void setAlumni(Boolean alumni) {
+        Alumni = alumni;
+    }
 
     public User(){
 
     }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public int getNumero_Projet() {
+        return numero_Projet;
+    }
+
+    public void setNumero_Projet(int numero_Projet) {
+        this.numero_Projet = numero_Projet;
+    }
+
+    public int getNumero_carte_etudiant() {
+        return numero_carte_etudiant;
+    }
+
+    public void setNumero_carte_etudiant(int numero_carte_etudiant) {
+        this.numero_carte_etudiant = numero_carte_etudiant;
+    }
+
     public String getSpecialite() {
         return specialite;
     }

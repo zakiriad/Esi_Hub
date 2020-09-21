@@ -45,6 +45,7 @@ public class SignUp_Activity extends AppCompatActivity {
         final DatabaseReference UserReference = FirebaseDatabase.getInstance().getReference("Liste_Etudiants");
         final DatabaseReference ResumeReference = FirebaseDatabase.getInstance().getReference("Resumes");
         final DatabaseReference VerificationReference = FirebaseDatabase.getInstance().getReference("Verifications");
+        final DatabaseReference AlumniReference = FirebaseDatabase.getInstance().getReference("Alumni");
 
         this.nom = (EditText)findViewById(R.id.Nom_SignUp);
         this.prenom = (EditText)findViewById(R.id.Prenom_SignUp);
@@ -175,7 +176,16 @@ public class SignUp_Activity extends AppCompatActivity {
                                                     user.setSpecialite(Specialite_selected);
                                                     resume.setSpecialite(Specialite_selected);
                                                 }
-                                                UserReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
+                                                else if(Niveau_selected == 6){
+                                                    user.setSpecialite(Specialite_selected);
+                                                    resume.setSpecialite(Specialite_selected);
+                                                    user.setAlumni(true);
+                                                    resume.setAlumni(true);
+                                                    user.setNiveau(0);
+                                                    resume.setNiveau(0);
+                                                }
+                                                if(Niveau_selected != 6) UserReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
+                                                else AlumniReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
                                                 ResumeReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(resume);
                                                 VerificationReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(verificationDossier);
 

@@ -91,7 +91,6 @@ public class Home_Activity extends AppCompatActivity {
                                 Etape = 2;
                             }
                         } catch (Exception e) {
-                            Log.e("exception", e.toString());
                         }
 
 
