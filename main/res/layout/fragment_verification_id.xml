@@ -46,10 +46,11 @@
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:gravity="center_vertical"
-            android:textSize="17dp"
+            android:textSize="15dp"
             android:textColor="#000"
-            android:text="Importer un scan de votre carte d'étudiant"
+            android:text="Importer un scan de votre carte d'étudiant (pdf)"
             />
+
         <LinearLayout
             android:layout_width="350dp"
             android:layout_height="40dp"

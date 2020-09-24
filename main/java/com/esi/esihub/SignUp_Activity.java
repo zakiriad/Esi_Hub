@@ -44,7 +44,7 @@ public class SignUp_Activity extends AppCompatActivity {
 
         final DatabaseReference UserReference = FirebaseDatabase.getInstance().getReference("Liste_Etudiants");
         final DatabaseReference ResumeReference = FirebaseDatabase.getInstance().getReference("Resumes");
-        final DatabaseReference VerificationReference = FirebaseDatabase.getInstance().getReference("Verifications");
+
         final DatabaseReference AlumniReference = FirebaseDatabase.getInstance().getReference("Alumni");
 
         this.nom = (EditText)findViewById(R.id.Nom_SignUp);
@@ -159,24 +159,25 @@ public class SignUp_Activity extends AppCompatActivity {
                     @Override
                     public void run() {
                         if (found[0]) {
+                            Toast.makeText(getApplicationContext(), "wer're here", Toast.LENGTH_LONG).show();
                             //Create the user
                             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email_content, MotDePasse_content)
                                     .addOnCompleteListener(SignUp_Activity.this, new OnCompleteListener<AuthResult>() {
                                         @Override
                                         public void onComplete(@NonNull Task<AuthResult> task) {
                                             if (!task.isSuccessful()) {
-
+                                                Toast.makeText(getApplicationContext(), "vérifier vos données", Toast.LENGTH_LONG).show();
                                             } else {
 
                                                 Resume resume = new Resume(nom_content, prenom_content, email_content, Niveau_selected, false, "", Genre);
                                                 User user = new User(nom_content, prenom_content, email_content, Niveau_selected, Genre, false);
                                                 Verification_Dossier verificationDossier = new Verification_Dossier();
 
-                                                if (Niveau_selected >= 4) {
+                                                if ((Niveau_selected >= 4)&&(Niveau_selected != 6)) {
                                                     user.setSpecialite(Specialite_selected);
                                                     resume.setSpecialite(Specialite_selected);
                                                 }
-                                                else if(Niveau_selected == 6){
+                                                if(Niveau_selected == 6){
                                                     user.setSpecialite(Specialite_selected);
                                                     resume.setSpecialite(Specialite_selected);
                                                     user.setAlumni(true);
@@ -184,10 +185,14 @@ public class SignUp_Activity extends AppCompatActivity {
                                                     user.setNiveau(0);
                                                     resume.setNiveau(0);
                                                 }
-                                                if(Niveau_selected != 6) UserReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
-                                                else AlumniReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
+                                                if(Niveau_selected != 6) {
+                                                    UserReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
+                                                }
+                                                else {
+                                                    AlumniReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
+                                                }
                                                 ResumeReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(resume);
-                                                VerificationReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(verificationDossier);
+
 
                                                 try {
                                                     ResumeReference.child("Langues").push();
@@ -211,7 +216,7 @@ public class SignUp_Activity extends AppCompatActivity {
                         }
 
                     }
-                },10000);
+                },5000);
 
 
 

@@ -168,7 +168,7 @@ public class Import_Documents_fragment extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
+                        progressDialog.dismiss();
                         String url = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
                         //To store the download url
                         if(fileName == "Memoire"){
@@ -200,7 +200,7 @@ public class Import_Documents_fragment extends Fragment {
                         // Creating a progress tracker
                         int currentProgress = (int)(100*taskSnapshot.getBytesTransferred()/taskSnapshot.getTotalByteCount());
                         progressDialog.setProgress(currentProgress);
-                        if(currentProgress == 100){
+                        if(currentProgress >= 100){
                             progressDialog.dismiss();
                         }
                     }

@@ -70,8 +70,6 @@ public class Suivie_etape_physique_fragment extends Fragment {
                     if(documents_db != null){
                         if(identite_db){
                             String document_txt= "Verification des documents";
-                            documents.setTextSize(Float.parseFloat("19dp"));
-                            documents.setTextColor(Integer.parseInt("#000"));
                             documents.setPaintFlags(documents.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
                             documents.setText(document_txt);
 
@@ -84,11 +82,13 @@ public class Suivie_etape_physique_fragment extends Fragment {
                     }
                     if(livres_db != null){
                         if(livres_db){
-                            String livres_txt= "Verification des prets";
+                            String livres_txt= "Verification des prêts";
                             livres.setPaintFlags(livres.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
                             livres.setText(livres_txt);
-                            livres.setTextSize(Float.parseFloat("19dp"));
-                            livres.setTextColor(Integer.parseInt("#000"));
+
+
+
+
                             progressBar.setProgress(100);
                         }else{
                             livres.setTextColor(Integer.parseInt("#FF0000"));

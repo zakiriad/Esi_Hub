@@ -90,13 +90,13 @@ public class Resume_fragment extends Fragment {
         });
         //Chargment du Nom et de la section Apropos SectionApropos
 
-            UserReference.addValueEventListener(new ValueEventListener() {
+            UserResumeReference.addValueEventListener(new ValueEventListener() {
                 @RequiresApi(api = Build.VERSION_CODES.M)
                 @SuppressLint("ResourceAsColor")
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     Resume userResume = dataSnapshot.getValue(Resume.class);
-
+                    if(userResume != null){
                         Nom.setText(userResume.getNom()+" "+userResume.getPrenom());
                         Contact.setOrientation(LinearLayout.VERTICAL);
 
@@ -143,8 +143,10 @@ public class Resume_fragment extends Fragment {
 
                         Contact.addView(Esi_Email);
                         Contact.addView(Telephone);
+                    }
 
-                }
+
+            }
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
 

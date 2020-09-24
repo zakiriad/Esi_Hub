@@ -74,13 +74,7 @@ public class User {
         this.specialite = specialite;
     }
 
-    public int getnumero_carte_etudiant() {
-        return numero_carte_etudiant;
-    }
 
-    public void setnumero_carte_etudiant(int Numero_carte_etudiant) {
-        numero_carte_etudiant = Numero_carte_etudiant;
-    }
 
     public String getLien_carte_etudiant() {
         return lien_carte_etudiant;
@@ -193,13 +187,7 @@ public class User {
         niveau = Niveau;
     }
 
-    public int getnumero_Projet() {
-        return numero_Projet;
-    }
 
-    public void setnumero_Projet(int numero_Projet) {
-        numero_Projet = numero_Projet;
-    }
 
     public Boolean getConfirmer_Dossier() {
         return confirmer_Dossier;
