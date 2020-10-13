@@ -11,14 +11,14 @@
 
 
                     var user_email = New_row.insertCell(0);
-                    var user_id = New_row.insertCell(1);
-                    var user_carte_etudiant = New_row.insertCell(2);
-                    var user_Nom= New_row.insertCell(3);
-                    var user_Prenom = New_row.insertCell(4);
-                    var user_Specialite = New_row.insertCell(5);
-                    var user_validate_checkbox = New_row.insertCell(6);
+                    
+                    var user_carte_etudiant = New_row.insertCell(1);
+                    var user_Nom= New_row.insertCell(2);
+                    var user_Prenom = New_row.insertCell(3);
+                    var user_Specialite = New_row.insertCell(4);
+                    var user_validate_checkbox = New_row.insertCell(5);
                     EtudiantsReference.child(child.key).child('email').on('value', snap=> user_email.innerHTML = snap.val());
-                    user_id.innerHTML = child.key;
+                    
                     
                     
                     EtudiantsReference.child(child.key).child('nom').on('value', snap=>   user_Nom.innerHTML = snap.val());

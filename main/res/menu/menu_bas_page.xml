@@ -15,4 +15,9 @@
         android:id="@+id/Job_menu_item"
         android:icon="@drawable/ic_icon_menu_jobs"
         />
+    <item
+        android:title="Formulaires"
+        android:id="@+id/Form_menu_item"
+        android:icon="@drawable/ic_icon_menu_jobs"
+        />
 </menu>

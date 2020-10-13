@@ -62,7 +62,6 @@ public class Actualite_fragment extends Fragment {
                     }
                     final Actualite_adapter adapter = new Actualite_adapter(getContext(), (ArrayList<Actualite>) news);
                     listView.setAdapter(adapter);
-                    //Implementer l'ouverture des liens externes.
 
 
                 }catch (Exception e){

@@ -159,7 +159,6 @@ public class SignUp_Activity extends AppCompatActivity {
                     @Override
                     public void run() {
                         if (found[0]) {
-                            Toast.makeText(getApplicationContext(), "wer're here", Toast.LENGTH_LONG).show();
                             //Create the user
                             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email_content, MotDePasse_content)
                                     .addOnCompleteListener(SignUp_Activity.this, new OnCompleteListener<AuthResult>() {

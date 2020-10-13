@@ -9,14 +9,14 @@ EtudiantReferences.once("value", function(snapshot){
 
 
                 var user_email = New_row.insertCell(0);
-                var user_id = New_row.insertCell(1);
-                var user_Nom= New_row.insertCell(2);
-                var user_Prenom = New_row.insertCell(3);
-                var user_Specialite = New_row.insertCell(4);
-                var user_Details_button = New_row.insertCell(5);
+                
+                var user_Nom= New_row.insertCell(1);
+                var user_Prenom = New_row.insertCell(2);
+                var user_Specialite = New_row.insertCell(3);
+                var user_Details_button = New_row.insertCell(4);
                 
                 EtudiantReferences.child(child.key).child('email').on('value', snap=> user_email.innerHTML = snap.val());
-                user_id.innerHTML = child.key;
+                
                 
                 
                 EtudiantReferences.child(child.key).child('nom').on('value', snap=>   user_Nom.innerHTML = snap.val());

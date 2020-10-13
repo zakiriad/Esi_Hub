@@ -5,159 +5,166 @@
     android:layout_height="match_parent"
     tools:context=".Etapes.Import_Documents_fragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="650dp"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
         android:layout_gravity="bottom"
-        >
-        <TextView
-            android:layout_width="350dp"
-            android:layout_height="40dp"
-            android:layout_margin="30dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_vertical"
-            android:text="Import de document"
-            android:textColor="#000"
-            android:textSize="20dp"
-            />
-        <TextView
-            android:layout_width="350dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_vertical"
-            android:textSize="19dp"
-            android:textColor="#000"
-            android:text="Indiquer le numero de votre projet"
-            />
-        <EditText
-            android:layout_width="350dp"
-            android:layout_height="40dp"
-            android:background="@drawable/edittext_border"
-            android:inputType="number"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="20dp"
-            android:id="@+id/NumeroProjet_import_documents"
-            android:paddingLeft="5dp"
-            />
-        <TextView
-            android:layout_width="350dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_vertical"
-            android:textSize="19dp"
-            android:textColor="#000"
-            android:text="Importer votre memoire"
-            />
-        <LinearLayout
-            android:layout_width="350dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
+        android:fillViewport="true">
 
-            <TextView
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:textSize="19dp"
-                android:textColor="#000"
-                android:text="Aucun fichier séléectionné"
-                android:id="@+id/Fichier_Memoire_Import_documents"
-                />
-            <Button
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/button_burders"
-                android:text="Choisir"
-                android:id="@+id/Choisir_Memoiree_Button_Import_documents"
-                />
-        </LinearLayout>
-        <TextView
-            android:layout_width="350dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_vertical"
-            android:textSize="19dp"
-            android:textColor="#000"
-            android:text="Importer votre projet"
-            />
         <LinearLayout
-            android:layout_width="350dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
-
-            <TextView
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:textSize="19dp"
-                android:textColor="#000"
-                android:text="Aucun fichier séléectionné"
-                android:id="@+id/Fichier_Projet_Import_documents"
-                />
-            <Button
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/button_burders"
-                android:text="Choisir"
-                android:id="@+id/Choisir_Projet_Button_Import_documents"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="350dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="650dp"
+            android:orientation="vertical"
+            android:layout_gravity="bottom"
             >
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Valider_checkbox_import_document"
+            <TextView
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:layout_margin="30dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                android:text="Import de document"
+                android:textColor="#000"
+                android:textSize="20dp"
                 />
             <TextView
-                android:layout_width="300dp"
-                android:layout_height="match_parent"
-                android:text="Je valide mes documents"
-                android:textColor="#000"
-                android:textAlignment="textStart"
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
                 android:gravity="center_vertical"
-                tools:ignore="RtlCompat"
                 android:textSize="19dp"
+                android:textColor="#000"
+                android:text="Indiquer le numero de votre projet"
                 />
+            <EditText
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:background="@drawable/edittext_border"
+                android:inputType="number"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/NumeroProjet_import_documents"
+                android:paddingLeft="5dp"
+                />
+            <TextView
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                android:textSize="19dp"
+                android:textColor="#000"
+                android:text="Importer votre memoire"
+                />
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="350dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
-            <Button
-                android:layout_width="170dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/button_burders"
-                android:backgroundTint="#C0C0C0"
-                android:text="Annuler"
-                android:layout_marginRight="5dp"
-                android:id="@+id/Annuler_Button_Import_documents"
+                <TextView
+                    android:layout_width="250dp"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:textSize="19dp"
+                    android:textColor="#000"
+                    android:text="Aucun fichier séléectionné"
+                    android:id="@+id/Fichier_Memoire_Import_documents"
+                    />
+                <Button
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/button_burders"
+                    android:text="Choisir"
+                    android:id="@+id/Choisir_Memoiree_Button_Import_documents"
+                    />
+            </LinearLayout>
+            <TextView
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                android:textSize="19dp"
+                android:textColor="#000"
+                android:text="Importer votre projet"
                 />
-            <Button
-                android:layout_width="170dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/button_burders"
-                android:text="Confirmer"
-                android:layout_marginLeft="5dp"
-                android:id="@+id/Confirmer_Button_Import_documents"
-                />
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="250dp"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:textSize="19dp"
+                    android:textColor="#000"
+                    android:text="Aucun fichier séléectionné"
+                    android:id="@+id/Fichier_Projet_Import_documents"
+                    />
+                <Button
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/button_burders"
+                    android:text="Choisir"
+                    android:id="@+id/Choisir_Projet_Button_Import_documents"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="20dp"
+                >
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Valider_checkbox_import_document"
+                    />
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="match_parent"
+                    android:text="Je valide mes documents"
+                    android:textColor="#000"
+                    android:textAlignment="textStart"
+                    android:gravity="center_vertical"
+                    tools:ignore="RtlCompat"
+                    android:textSize="19dp"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+                <Button
+                    android:layout_width="170dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/button_burders"
+                    android:backgroundTint="#C0C0C0"
+                    android:text="Annuler"
+                    android:layout_marginRight="5dp"
+                    android:id="@+id/Annuler_Button_Import_documents"
+                    />
+                <Button
+                    android:layout_width="170dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/button_burders"
+                    android:text="Confirmer"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/Confirmer_Button_Import_documents"
+                    />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
