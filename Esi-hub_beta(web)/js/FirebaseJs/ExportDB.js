@@ -15,7 +15,6 @@ function Export(Section){
                     Author : "Esi_Admin",
                 };
                 WorkBook.SheetNames.push("1CPI");
-                var data = [["Nom","Prenom","Email","Niveau"]];
                 var data = [["Nom","Prenom","Email","Genre","Date de naissance", "Lieu de naissance"]];
                 var EtudiantsRef = firebase.database().ref().child("Liste_Etudiants").orderByChild("niveau").equalTo(1).once("value", function(snap){
                     snap.forEach(function(child) {
@@ -46,7 +45,7 @@ function Export(Section){
                     Author : "Esi_Admin",
                 };
                 WorkBook.SheetNames.push("2CPI");
-                var data = [["Nom","Prenom","Email","Niveau"]];
+                
                 var data = [["Nom","Prenom","Email","Genre","Date de naissance", "Lieu de naissance"]];
                 var EtudiantsRef = firebase.database().ref().child("Liste_Etudiants").orderByChild("niveau").equalTo(2).once("value", function(snap){
                     snap.forEach(function(child) {
@@ -76,7 +75,7 @@ function Export(Section){
                     Author : "Esi_Admin",
                 };
                 WorkBook.SheetNames.push("1CS");
-                var data = [["Nom","Prenom","Email","Niveau"]];
+                
                 var data = [["Nom","Prenom","Email","Genre","Date de naissance", "Lieu de naissance"]];
                 var EtudiantsRef = firebase.database().ref().child("Liste_Etudiants").orderByChild("niveau").equalTo(3).once("value", function(snap){
                     snap.forEach(function(child) {
@@ -106,7 +105,7 @@ function Export(Section){
                     Author : "Esi_Admin",
                 };
                 WorkBook.SheetNames.push("2CS");
-                var data = [["Nom","Prenom","Email","Niveau"]];
+                
                 var data = [["Nom","Prenom","Email","Spécialité","Genre","Date de naissance", "Lieu de naissance"]];
                 var EtudiantsRef = firebase.database().ref().child("Liste_Etudiants").orderByChild("niveau").equalTo(4).once("value", function(snap){
                     snap.forEach(function(child) {
@@ -142,7 +141,7 @@ function Export(Section){
                         data.push([child.val().nom,
                             child.val().prenom,
                             child.val().email,
-                            child.val().Spécialité,
+                            child.val().Specialite,
                             child.val().genre,
                             child.val().Date_de_naissance,
                             child.val().Lieu_de_naissance
